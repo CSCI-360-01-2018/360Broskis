@@ -1,0 +1,35 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1504\cocoasubrtf830
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\froman\fcharset0 TimesNewRomanPSMT;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+{\info
+{\author Kevin Ossa}}\margl1339\margr1354\margb274\margt1483\vieww12540\viewh16140\viewkind1\viewscale108
+\deftab720
+\pard\pardeftab720\ri0\partightenfactor0
+
+\f0\fs24 \cf0 360Broskis
+\f1 \
+\
+
+\f0 Dual-alarm AM/FM Clock Radio\
+\pard\pardeftab720\ri0\partightenfactor0
+
+\f1 \cf0 \
+\pard\pardeftab720\ri0\partightenfactor0
+
+\f0\b \cf0 \ul \ulc0 Vision\
+\pard\pardeftab720\ri0\partightenfactor0
+
+\f1\b0 \cf0 \ulnone \
+Create software to control a dual-alarm AM/FM clock radio, with the ability to set one and/or two seperate alarms.\
+\
+Functionality:\
+	- Volume control\
+		- Slider to adjust\
+	- Dual alarm optional setting\
+		- Sepeate buttons for each alarm\
+	- AM/FM radio tuning\
+		- Slider to adjust radio station\
+	- On-screen display with the current time, alarm time and radio features\
+\
+}
