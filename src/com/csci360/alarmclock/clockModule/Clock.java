@@ -12,12 +12,14 @@ import java.util.TimerTask;
  *
  * @author Austin
  */
+
 public class Clock {
     public Clock(){
         // random comment for git test
     }
     
     public void updateTime(){
+        Timer time = new Timer();
     }
 
     public static void main(String[] args){
