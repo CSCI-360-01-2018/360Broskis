@@ -47,6 +47,10 @@ public class RadioTest {
         Radio instance = new Radio();
         instance.setActive(Active);
         // TODO review the generated test code and remove the default call to fail.
+        if(instance.getActive() == false){
+            System.out.println("Active switch to inactive");
+            return;
+        }
         fail("The test case is a prototype.");
     }
 
@@ -60,6 +64,10 @@ public class RadioTest {
         Radio instance = new Radio();
         instance.setVolume(volume);
         // TODO review the generated test code and remove the default call to fail.
+        if(instance.getVolume() == 0){
+            System.out.println("Radio volume set to 0");
+            return;
+        }
         fail("The test case is a prototype.");
     }
 
@@ -69,10 +77,33 @@ public class RadioTest {
     @Test
     public void testSetStation() {
         System.out.println("setStation");
-        Station station = null;
+        Station station = new Station((float)103.5);
         Radio instance = new Radio();
         instance.setStation(station);
         // TODO review the generated test code and remove the default call to fail.
+        if(instance.getStation() == 103.5){
+            System.out.println("Station set to 103.5");
+            return;
+        }
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of getVolume method, of class Radio.
+     */
+    @Test
+    public void testGetVolume() {
+        System.out.println("getVolume");
+        Radio instance = new Radio();
+        int expResult = 0;
+        int result = instance.getVolume();
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        if(expResult == result){
+            System.out.println("Volumes are equal");
+            return;
+        }
+        
         fail("The test case is a prototype.");
     }
     

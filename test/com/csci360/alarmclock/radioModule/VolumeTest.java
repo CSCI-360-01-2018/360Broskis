@@ -47,6 +47,10 @@ public class VolumeTest {
         Volume instance = new Volume();
         instance.setVolume(vol);
         // TODO review the generated test code and remove the default call to fail.
+        if(instance.getVolume() == vol){
+            System.out.println("Set volume to 0");
+            return;
+        }
         fail("The test case is a prototype.");
     }
 
@@ -61,6 +65,10 @@ public class VolumeTest {
         int result = instance.getVolume();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
+        if(expResult == result){
+            System.out.println("Retrieved volume");
+            return;
+        }
         fail("The test case is a prototype.");
     }
     
