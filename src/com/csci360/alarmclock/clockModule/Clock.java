@@ -14,23 +14,37 @@ import java.util.TimerTask;
  */
 
 public class Clock {
-    public Clock(){
+    public Clock() {
         // random comment for git test
     }
-    
-    public void updateTime(int hour, int minute, String amPm){
+
+    public void updateTime(int hour, int minute, String amPm) {
         // Set time
     }
-    
-    public int getTime(){
+
+    public int getTime() {
         // Return Time
         return 0;
     }
-    
-    public void tick(){
+
+    public void tick() {
         // Tick clock
+        Timer timer = new Timer();
+        TimerTask task = new TimerTask() {
+          public void run() {
+            minute++;
+            System.out.println("Minutes passed: " + minute);
+            // timer.scheduleAtFixedRate(task, 60000, 60000) ---- where does this go?
+          }
+        };
+
+        if (hour == 24 && minute == 60) {
+          // reset timer here, every 24hrs
+          timer.cancel(); // stops thread
+        }
     }
-    public static void main(String[] args){
+
+    public static void main(String[] args) {
         //Clock clk = new Clock();
     }
 }
