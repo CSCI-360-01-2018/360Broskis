@@ -50,20 +50,7 @@ public class StationTest {
         fail("The test case is a prototype.");
     }
 
-    /**
-     * Test of getStation method, of class Station.
-     */
-    @Test
-    public void testGetStation() {
-        System.out.println("getStation");
-        Station instance = new Station();
-        float expResult = 0.0F;
-        float result = instance.getStation();
-        assertEquals(expResult, result, 0.0);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
+  
     /**
      * Test of getFrequency method, of class Station.
      */
