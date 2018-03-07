@@ -14,7 +14,7 @@ import static org.junit.Assert.*;
 
 /**
  *
- * @author kossa
+ * @author Austin
  */
 public class StationTest {
     
@@ -37,8 +37,43 @@ public class StationTest {
     public void tearDown() {
     }
 
+    /**
+     * Test of setStation method, of class Station.
+     */
     @Test
-    public void testSomeMethod() {
+    public void testSetStation() {
+        System.out.println("setStation");
+        float frequency = 0.0F;
+        Station instance = new Station();
+        instance.setStation(frequency);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of getStation method, of class Station.
+     */
+    @Test
+    public void testGetStation() {
+        System.out.println("getStation");
+        Station instance = new Station();
+        float expResult = 0.0F;
+        float result = instance.getStation();
+        assertEquals(expResult, result, 0.0);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of getFrequency method, of class Station.
+     */
+    @Test
+    public void testGetFrequency() {
+        System.out.println("getFrequency");
+        Station instance = new Station();
+        float expResult = 0.0F;
+        float result = instance.getFrequency();
+        assertEquals(expResult, result, 0.0);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }

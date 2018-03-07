@@ -18,11 +18,19 @@ public class Clock {
         // random comment for git test
     }
     
-    public void updateTime(){
-        Timer time = new Timer();
+    public void updateTime(int hour, int minute, String amPm){
+        // Set time
     }
-
+    
+    public int getTime(){
+        // Return Time
+        return 0;
+    }
+    
+    public void tick(){
+        // Tick clock
+    }
     public static void main(String[] args){
-        Clock clk = new Clock();
+        //Clock clk = new Clock();
     }
 }

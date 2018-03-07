@@ -10,5 +10,7 @@ package com.csci360.alarmclock.alarmModule;
  * @author Austin
  */
 public class Alarm {
-    
+    private int alarmNum,hour,minute;
+    private String amPm;
+    private boolean active;
 }

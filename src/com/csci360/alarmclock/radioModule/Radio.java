@@ -11,4 +11,24 @@ package com.csci360.alarmclock.radioModule;
  */
 public class Radio {
     
+    private Station station;
+    private Volume volume;
+    boolean active;
+    
+    public Radio(){
+        
+    }
+    
+    public void setActive(boolean Active){
+        active = Active;
+    }
+    
+    public void setVolume(int volume){
+        this.volume.setVolume(volume);
+    }
+    
+    public void setStation(Station station){
+        this.station.setStation(station.getFrequency());
+    }
+    
 }

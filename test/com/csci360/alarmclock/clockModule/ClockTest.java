@@ -60,5 +60,31 @@ public class ClockTest {
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
+
+    /**
+     * Test of getTime method, of class Clock.
+     */
+    @Test
+    public void testGetTime() {
+        System.out.println("getTime");
+        Clock instance = new Clock();
+        int expResult = 0;
+        int result = instance.getTime();
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of tick method, of class Clock.
+     */
+    @Test
+    public void testTick() {
+        System.out.println("tick");
+        Clock instance = new Clock();
+        instance.tick();
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
     
 }
