@@ -23,7 +23,8 @@ public class Clock {
     }
 
     public int getTime() {
-        // Return Time
+        String theTime = System.out.println("The current time is: %d:%d", hour, minute);
+        // something like this ^^
         return 0;
     }
 
@@ -45,6 +46,6 @@ public class Clock {
     }
 
     public static void main(String[] args) {
-        //Clock clk = new Clock();
+        Clock clk = new Clock();
     }
 }
