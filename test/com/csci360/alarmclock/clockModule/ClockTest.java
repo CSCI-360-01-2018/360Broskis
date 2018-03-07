@@ -44,7 +44,10 @@ public class ClockTest {
     public void testUpdateTime() {
         System.out.println("updateTime");
         Clock instance = new Clock();
-        instance.updateTime();
+        int hour = 8;
+        int minute = 10;
+        String amPm = "am";
+        instance.updateTime(hour, minute, amPm);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }

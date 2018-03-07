@@ -12,6 +12,10 @@ package com.csci360.alarmclock.radioModule;
 public class Station {
     float freq;
     
+    public Station(float frequency){
+        freq = frequency;
+    }
+    
     public void setStation(float frequency)
     {
         freq = frequency;
