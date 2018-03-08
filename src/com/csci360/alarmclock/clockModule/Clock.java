@@ -5,80 +5,70 @@
  */
 package com.csci360.alarmclock.clockModule;
 
+
 import java.util.Timer;
 import java.util.TimerTask;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.GregorianCalendar;
-import java.util.concurrent.TimeUnit;
+
 
 /**
  *
  * @author Austin
  */
+public class Clock{
+    private int minute = 0;
+    private int hour = 12;
+    private String amPm = "AM";
 
-public class Clock {
-    private int minute;
-    private int hour;
-    private String amPm;
-    private Calendar cal;
-    private Date date;
-    
-    
-    // Create timer + timer task (clock cycle)
-    Timer timer = new Timer();
-    TimerTask task = new TimerTask() {
-        public void run() {
-            minute++;
-            System.out.println("Minutes passed: " + minute);
-            // timer.scheduleAtFixedRate(task, 60000, 60000) ---- where does this go?
-          }
-    };
     
     public Clock() {
-        // random comment for git test
-        cal = new GregorianCalendar();
+        Timer clock = new Timer();
+        clock.scheduleAtFixedRate(new TimerTask() 
+        {
+           @Override
+           public void run() 
+           {
+                minute++;
+                if (minute == 60)
+                {
+                    minute = 0;
+                    hour++;
+                }
+                if(hour == 13 ){
+                    hour = 1;
+                }
+                if (hour == 12 && minute == 0 ){
+                    if (amPm.equals("AM")){
+                        amPm = "PM";
+                    }
+                    else if (amPm.equals("PM")){
+                        amPm = "AM";
+                    }
+                }
+                    
+                    
+                
+            }
+        }, 60000, 60000);
     }
+     
+    
+
 
     public void updateTime(int hour, int minute, String amPm) {
-        // Set time
-        //Calendar.set(Calendar.HOUR_OF_DAY, int hours).
-        amPm = amPm.toLowerCase();
+        this.hour = hour;
+        this.minute = minute;
         this.amPm = amPm;
-        cal.set(Calendar.HOUR, hour);
-        cal.set(Calendar.MINUTE, minute);
-
-        if(amPm.equals("am"))
-            cal.set(Calendar.AM_PM, Calendar.AM);
-        else
-            cal.set(Calendar.AM_PM, Calendar.PM);
         
-        // This will set time to HH:MM:SS with input Hour / Minute 
-        System.out.println(cal.getTime() + " " + amPm.toUpperCase());
     }
 
-    public int getTime() {
-        String theTime;
-        theTime = String.format("The current time is: %d:%d", hour, minute);
-        System.out.println(theTime + amPm);
-        System.out.println(cal.getTime());
-        // something like this ^^
-        return 0;
+    public String getTime() {
+        String result = String.format("%d:%d %s",hour,minute,amPm);
+        return result;
     }
 
     public void tick() {
-        // Tick clock
-        timer.scheduleAtFixedRate(task, 60000, 60000);
+       
         
-
-        if (hour == 24 && minute == 60) {
-          // reset timer here, every 24hrs
-          timer.cancel(); // stops thread
-          timer.scheduleAtFixedRate(task, 60000, 60000);
         }
     }
 
-    public static void main(String[] args) {
-        Clock clk = new Clock();
-    }
-}

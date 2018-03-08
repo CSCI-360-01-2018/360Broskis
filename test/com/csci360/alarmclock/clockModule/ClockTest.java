@@ -46,48 +46,38 @@ public class ClockTest {
         Clock instance = new Clock();
         int hour = 8;
         int minute = 10;
-        String amPm = "am";
+        String amPm = "AM";
         instance.updateTime(hour, minute, amPm);
+        
+        String result = instance.getTime();
+        if (result.equals("8:10 AM")){
+            System.out.println("Time updated");
+            return;
+        }
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        fail("Clock failed to update time correctly");
     }
-
     /**
-     * Test of main method, of class Clock.
-     */
     @Test
-    public void testMain() {
-        System.out.println("main");
-        String[] args = null;
-        Clock.main(args);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    public void testClockFunction(){
+        System.out.println("Starting Clock");
+        Clock clock = new Clock();
+        for(int i = 0; i < 10; i++){
+            
+            System.out.println(clock.getTime());
+            try{
+            Thread.sleep(60000);
+            }
+            catch(Exception e){
+                
+            }
+        }
+        fail("what?");
+        
     }
+*/
 
-    /**
-     * Test of getTime method, of class Clock.
-     */
-    @Test
-    public void testGetTime() {
-        System.out.println("getTime");
-        Clock instance = new Clock();
-        int expResult = 0;
-        int result = instance.getTime();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
 
-    /**
-     * Test of tick method, of class Clock.
-     */
-    @Test
-    public void testTick() {
-        System.out.println("tick");
-        Clock instance = new Clock();
-        instance.tick();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
+ 
     
 }
