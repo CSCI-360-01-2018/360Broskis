@@ -65,6 +65,14 @@ public class Clock{
         String result = String.format("%d:%d %s",hour,minute,amPm);
         return result;
     }
+    
+    public int getHour(){
+        return hour;
+    }
+    
+    public int getMinute(){
+        return minute;
+    }
 
     public void tick() {
        
