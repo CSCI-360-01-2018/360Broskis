@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.csci360.alarmclock.alarmModule;
+package com.csci360.alarmclock.clockModule;
 
 import com.csci360.alarmclock.clockModule.Clock;
 import java.util.logging.Level;
@@ -92,7 +92,7 @@ public class AlarmTest {
         Clock clock = new Clock();
         Alarm instance = new Alarm();
         clock.updateTime(8, 0, "am");
-        instance.setAlarmTime(8, 1);
+        instance.setAlarmTime(8, 1,"am");
         try {
             Thread.sleep(60000);
             if(instance.compareTime(clock)){
