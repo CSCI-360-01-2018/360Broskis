@@ -15,14 +15,17 @@ import java.util.TimerTask;
  * @author Austin
  */
 public class Clock{
-    private int minute = 0;
-    private int hour = 12;
-    private String amPm = "AM";
+    private int minute;
+    private int hour;
+    private String amPm;
     private Alarm alarm1;
     private Alarm alarm2;
 
     
     public Clock() {
+        minute = 0;
+        hour = 8;
+        amPm = "AM";
         alarm1 = new Alarm();
         alarm2 = new Alarm();
         Timer clock = new Timer();
@@ -49,14 +52,7 @@ public class Clock{
                     }
                 }
                 
-                //Alarm Checker
-                
-                if(alarm1.getAlarmInfo().equals(String.format("%d:%d %s",hour,minute,amPm))){
-                    System.out.println("Alarm1 goes off...");
-                }
-                else if(alarm2.getAlarmInfo().equals(String.format("%d:%d %s",hour,minute,amPm))){
-                    System.out.println("Alarm2 goes off...");
-                }
+                checkAlarm();
                     
                     
                 
@@ -65,7 +61,7 @@ public class Clock{
     }
      
     
-
+    
 
     public void updateTime(int hour, int minute, String amPm) {
         this.hour = hour;
@@ -106,6 +102,14 @@ public class Clock{
         else{
             return "Incorrect alarm index";
         }
+    }
+    public void checkAlarm(){
+         if(alarm1.getAlarmInfo().equals(String.format("%d:%d %s",hour,minute,amPm))){
+            System.out.println("Alarm1 goes off...");
+         }
+         else if(alarm2.getAlarmInfo().equals(String.format("%d:%d %s",hour,minute,amPm))){
+            System.out.println("Alarm2 goes off...");
+         }
     }
     
     public void activateAlarm(int alarm, boolean active){

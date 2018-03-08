@@ -15,7 +15,7 @@ import javafx.scene.media.MediaPlayer;
  * @author Austin
  */
 public class Alarm{
-    private int alarmNum,hour,minute;
+    private int hour,minute;
     private String amPm;
     private String toneTest;
     private boolean active;
