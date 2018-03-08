@@ -12,7 +12,7 @@ package com.csci360.alarmclock.radioModule;
 public class Volume {
     int volume;
     
-    public void setVolume(int vol){
+    public void setVolume(int vol){ 
         volume = vol;
     }
  

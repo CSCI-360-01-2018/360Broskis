@@ -38,7 +38,7 @@ public class RadioTest {
     }
 
     /**
-     * Test of setActive method, of class Radio.
+     * Test of setActive method and getActive method, of class Radio.
      */
     @Test
     public void testSetActive() {
@@ -53,15 +53,19 @@ public class RadioTest {
         }
         fail("The test case is a prototype.");
     }
+    
+    
+ 
 
     /**
-     * Test of setVolume method, of class Radio.
+     * Test of setVolume method / getVolume method, of class Radio.
      */
     @Test
     public void testSetVolume() {
         System.out.println("setVolume");
         int volume = 0;
         Radio instance = new Radio();
+        //It breaks here
         instance.setVolume(volume);
         // TODO review the generated test code and remove the default call to fail.
         if(instance.getVolume() == 0){
@@ -74,6 +78,7 @@ public class RadioTest {
     /**
      * Test of setStation method, of class Radio.
      */
+    
     @Test
     public void testSetStation() {
         System.out.println("setStation");
@@ -91,6 +96,7 @@ public class RadioTest {
     /**
      * Test of getVolume method, of class Radio.
      */
+    
     @Test
     public void testGetVolume() {
         System.out.println("getVolume");
@@ -106,5 +112,6 @@ public class RadioTest {
         
         fail("The test case is a prototype.");
     }
+    
     
 }

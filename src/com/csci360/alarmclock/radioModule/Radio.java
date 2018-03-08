@@ -10,15 +10,14 @@ package com.csci360.alarmclock.radioModule;
  * @author Austin
  */
 public class Radio {
-
-    private Station station;
-    private Volume volume;
+    private Station station = new Station(0);
+    private Volume volume = new Volume();
     private boolean active;
 
     public Radio() {
 
     }
-
+    
     public void setActive(boolean Active) {
         active = Active;
     }
@@ -27,8 +26,8 @@ public class Radio {
         return active;
     }
 
-    public void setVolume(int volume) {
-        this.volume.setVolume(volume);
+    public void setVolume(int vol) {
+        volume.setVolume(vol);
     }
     
     public int getVolume(){
