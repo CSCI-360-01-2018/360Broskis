@@ -20,6 +20,7 @@ public class Clock{
     private String amPm;
     private Alarm alarm1;
     private Alarm alarm2;
+    Timer clock;
 
     
     public Clock() {
@@ -27,8 +28,10 @@ public class Clock{
         hour = 8;
         amPm = "AM";
         alarm1 = new Alarm();
+        alarm1.setAlarmTime(12, 0, "AM");
         alarm2 = new Alarm();
-        Timer clock = new Timer();
+        alarm2.setAlarmTime(12, 0, "AM");
+        clock = new Timer();
         clock.scheduleAtFixedRate(new TimerTask() 
         {
            @Override
@@ -119,6 +122,10 @@ public class Clock{
         else if (alarm == 2){
             alarm2.activateAlarm(active);
         }
+    }
+    
+    public void terminateClock(){
+        clock.cancel();
     }
 }
 
