@@ -14,52 +14,48 @@ import javafx.scene.media.MediaPlayer;
  *
  * @author Austin
  */
-public class Alarm{
+public class Alarm {
     private int hour,minute;
     private String amPm;
     private String toneTest;
     private boolean active;
     private Media tone;
-    
-    public void setAlarmTime(int hr, int min, String amPm){
+
+    public void setAlarmTime(int hr, int min, String amPm) {
         hour = hr;
         minute = min;
         this.amPm = amPm;
     }
-    
-    public void activateAlarm(boolean active){
+
+    public void activateAlarm(boolean active) {
         this.active = active;
     }
-    public String getAlarmInfo(){
+    public String getAlarmInfo() {
          String info = String.format("%d:%d %s",hour,minute,amPm);
          return info;
     }
-    
-    public int getHour(){
+
+    public int getHour() {
         return hour;
     }
-    public int getMinute(){
+    public int getMinute() {
         return minute;
     }
-    
-     public boolean compareTime(Clock clock){
+
+     public boolean compareTime(Clock clock) {
         return (this.hour == clock.getHour() && this.minute == clock.getMinute());
     }
-    public void setTone(Media file){
+    public void setTone(Media file) {
         tone = file;
     }
-    
-    public Media getTone(){
+
+    public Media getTone() {
         return tone;
     }
-    
-    public String ring(){
+
+    public String ring() {
         //System.out.println("Wake up");
         toneTest = "Wake up";
         return toneTest;
     }
-    
-    
-    
-
 }
