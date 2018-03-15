@@ -65,7 +65,12 @@ public class Clock{
     }
 
     public String getTime() {
-        String result = String.format("%d:%d %s",hour,minute,amPm);
+        String result;
+        if(minute < 10)
+            result = String.format("%d:0%d %s",hour,minute,amPm);
+        else 
+            result = String.format("%d:%d %s",hour,minute,amPm);
+        //String result = String.format("%d:%d %s",hour,minute,amPm);
         return result;
     }
 

@@ -46,6 +46,12 @@ public class ClockTest {
     public void testUpdateTime() {
         System.out.println("updateTime");
         Clock instance = new Clock();
+        
+        //Test update time to present 00-09
+        System.out.println("Test updating to present 00-09");
+        instance.updateTime(8, 5, "AM");
+        System.out.println(instance.getTime());
+        
         int hour = 8;
         int minute = 10;
         String amPm = "AM";
