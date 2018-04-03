@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.csci360.alarmclock.GUI.FXMLController">
+   <children>
+      <TabPane prefHeight="400.0" prefWidth="800.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <tabs>
+          <Tab text="Clock Tab">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TextField layoutX="164.0" layoutY="162.0">
+                           <font>
+                              <Font size="22.0" />
+                           </font>
+                        </TextField>
+                        <Text layoutX="276.0" layoutY="156.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Time">
+                           <font>
+                              <Font size="22.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+          <Tab text="Alarm Tab">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="367.0" prefWidth="751.0">
+                     <children>
+                        <TextField fx:id="alarm1ActiveText" layoutX="14.0" layoutY="162.0">
+                           <font>
+                              <Font size="22.0" />
+                           </font>
+                        </TextField>
+                        <Text layoutX="14.0" layoutY="139.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Alarm 1 Time">
+                           <font>
+                              <Font size="22.0" />
+                           </font>
+                        </Text>
+                        <TextField layoutX="313.0" layoutY="161.0">
+                           <font>
+                              <Font size="22.0" />
+                           </font>
+                        </TextField>
+                        <Text layoutX="457.0" layoutY="139.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Alarm 2 Time">
+                           <font>
+                              <Font size="22.0" />
+                           </font>
+                        </Text>
+                        <CheckBox layoutX="14.0" layoutY="219.0" mnemonicParsing="false" text="Alarm 1 Active">
+                           <font>
+                              <Font size="22.0" />
+                           </font>
+                        </CheckBox>
+                        <ToggleButton layoutX="14.0" layoutY="279.0" mnemonicParsing="false" onAction="#alarm1Active" text="Alarm 1 Active TEST" />
+                        <CheckBox layoutX="404.0" layoutY="219.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" text="Alarm 2 Active">
+                           <font>
+                              <Font size="22.0" />
+                           </font>
+                        </CheckBox>
+                        <ToggleButton layoutX="465.0" layoutY="279.0" mnemonicParsing="false" text="Alarm 2 Active TEST" />
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+            <Tab text="Radio Tab">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Slider layoutX="40.0" layoutY="215.0" orientation="VERTICAL" />
+                        <Text layoutX="12.0" layoutY="206.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Volume" wrappingWidth="112.79296875">
+                           <font>
+                              <Font size="22.0" />
+                           </font>
+                        </Text>
+                        <Text layoutX="199.0" layoutY="209.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Frequency">
+                           <font>
+                              <Font size="22.0" />
+                           </font>
+                        </Text>
+                        <Slider layoutX="242.0" layoutY="215.0" orientation="VERTICAL" />
+                     </children>
+                  </AnchorPane>
+              </content>
+            </Tab>
+        </tabs>
+      </TabPane>
+   </children>
+</AnchorPane>
