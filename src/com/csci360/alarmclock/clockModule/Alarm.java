@@ -20,6 +20,7 @@ public class Alarm {
     private String toneTest;
     private boolean active;
     private Media tone;
+    private String info;
 
     public void setAlarmTime(int hr, int min, String amPm) {
         hour = hr;
@@ -31,7 +32,12 @@ public class Alarm {
         this.active = active;
     }
     public String getAlarmInfo() {
-         String info = String.format("%d:%d %s",hour,minute,amPm);
+        if(minute<10){
+            info = String.format("%d:0%d %s %s",hour,minute,amPm, active);
+        }
+        else{
+            info = String.format("%d:%d %s %s",hour,minute,amPm, active);
+        }
          return info;
     }
 

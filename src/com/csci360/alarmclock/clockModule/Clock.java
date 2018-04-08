@@ -54,7 +54,7 @@ public class Clock{
                 }
                 checkAlarm();
             }
-        }, 10, 10);
+        }, 10000, 10000);
     }
 
     public void updateTime(int hour, int minute, String amPm) {
@@ -123,4 +123,13 @@ public class Clock{
     public void terminateClock() {
         clock.cancel();
     }
+    
+    public void setHour(int hr){
+        hour = hr;
+    }
+    
+    public void setMinute(int min){
+        minute = min;
+    }
+    
 }
