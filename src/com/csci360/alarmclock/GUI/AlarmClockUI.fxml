@@ -42,7 +42,7 @@
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="367.0" prefWidth="751.0">
                      <children>
-                        <TextField fx:id="textF" layoutX="14.0" layoutY="162.0">
+                        <TextField fx:id="alarm1Time" layoutX="14.0" layoutY="162.0">
                            <font>
                               <Font size="22.0" />
                            </font>
@@ -52,7 +52,7 @@
                               <Font size="22.0" />
                            </font>
                         </Text>
-                        <TextField layoutX="313.0" layoutY="161.0">
+                        <TextField fx:id="alarm2Time" layoutX="313.0" layoutY="161.0">
                            <font>
                               <Font size="22.0" />
                            </font>
@@ -67,13 +67,17 @@
                               <Font size="22.0" />
                            </font>
                         </CheckBox>
-                        <ToggleButton layoutX="14.0" layoutY="279.0" mnemonicParsing="false" onAction="#setTextField" text="Alarm 1 Active TEST" />
+                        <ToggleButton layoutX="14.0" layoutY="279.0" mnemonicParsing="false" text="Alarm 1 Active TEST" />
                         <CheckBox fx:id="alarm2ActCheck" layoutX="404.0" layoutY="219.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onAction="#alarm2Active" text="Alarm 2 Active">
                            <font>
                               <Font size="22.0" />
                            </font>
                         </CheckBox>
                         <ToggleButton layoutX="465.0" layoutY="279.0" mnemonicParsing="false" text="Alarm 2 Active TEST" />
+                        <TextField fx:id="alarm1SetTime" layoutX="14.0" layoutY="322.0" promptText="Set Alarm Time" />
+                        <TextField fx:id="alarm2SetTime" layoutX="437.0" layoutY="322.0" promptText="Set Alarm Time" />
+                        <Button layoutX="170.0" layoutY="322.0" mnemonicParsing="false" onAction="#setAlarm1Time" text="Set Alarm 1" />
+                        <Button layoutX="351.0" layoutY="322.0" mnemonicParsing="false" onAction="#setAlarm2Time" text="Set Alarm 2" />
                      </children>
                   </AnchorPane>
             </content>
