@@ -158,4 +158,14 @@ public class Clock{
         }
     }
     
+    public Alarm getAlarm(int alarmNum){
+        if(alarmNum == 1){
+            return alarm1;
+        }
+        else if(alarmNum == 2){
+            return alarm2;
+        }
+        return null;
+    }
+    
 }

@@ -135,6 +135,7 @@ public class AlarmClockUIController implements Initializable {
             int[] alarmTimes = alarmOneSettings.getAlarmTimes();
             String amPm = alarmOneSettings.getAlarmAmPm();
             clk.setAlarm(alarmTimes[0], alarmTimes[1], amPm, 1);
+            clk.getAlarm(1).alignTime();
         
             alarm1Time.setText(clk.checkAlarmInfo(1));
         /*
@@ -175,6 +176,8 @@ public class AlarmClockUIController implements Initializable {
         int[] alarmTimes = alarmTwoSettings.getAlarmTimes();
         String amPm = alarmTwoSettings.getAlarmAmPm();
         clk.setAlarm(alarmTimes[0], alarmTimes[1], amPm, 2);
+        
+        clk.getAlarm(2).alignTime();
         
         alarm2Time.setText(clk.checkAlarmInfo(2));
     }

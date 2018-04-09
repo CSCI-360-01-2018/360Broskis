@@ -64,4 +64,21 @@ public class Alarm {
         toneTest = "Wake up";
         return toneTest;
     }
+    
+    
+    public void alignTime(){
+        if(hour > 12){
+            hour %= 12;
+            //switchAMPM(amPm);
+        }
+    }
+    private void switchAMPM(String amPM){
+        if(amPM.equals("AM")){
+            amPm = "PM";
+        }
+        else if(amPM.equals("PM")){
+            amPm = "AM";
+        }
+    }
+
 }
