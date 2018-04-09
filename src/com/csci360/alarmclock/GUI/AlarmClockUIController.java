@@ -15,9 +15,15 @@ import javafx.event.ActionEvent;
 
 import com.csci360.alarmclock.clockModule.Alarm;
 import com.csci360.alarmclock.clockModule.Clock;
+import com.csci360.alarmclock.radioModule.Radio;
+import com.csci360.alarmclock.radioModule.Station;
+import java.text.NumberFormat;
 import java.util.Timer;
 import java.util.TimerTask;
+import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
+import javafx.scene.control.Slider;
+import javafx.scene.input.DragEvent;
 //import com.csci360.alarmclock.clockModule.alarm;
 
 /**
@@ -29,6 +35,7 @@ public class AlarmClockUIController implements Initializable {
     private Clock clk;// = new Clock();
     private Alarm alarm1 = new Alarm();
     private Alarm alarm2 = new Alarm();
+    private com.csci360.alarmclock.radioModule.Radio radio = new Radio();
     
     private Timer timer;
     
@@ -41,6 +48,15 @@ public class AlarmClockUIController implements Initializable {
     @FXML private TextField alarm2SetTime;
     @FXML private TextField alarm1Time;
     @FXML private TextField alarm2Time;
+    
+    @FXML private Button setAlarm1Button;
+    @FXML private Button setAlarm2Button;
+    //
+    @FXML private TextField rVolText;
+    @FXML private TextField rFreqText;
+    @FXML private Slider rVolSlider;
+    @FXML private Slider rFreqSlider;
+    
     
     /**
      * Initializes the controller class.
@@ -110,14 +126,18 @@ public class AlarmClockUIController implements Initializable {
     
     @FXML
     public void setAlarm1Time(ActionEvent e){
-        // Set alarm 1 time
-        String setTime = alarm1SetTime.getText();
-        int hr = parseAlarmHr(setTime);
-        int min = parseAlarmMin(setTime);
-        String amPM = parseAlarmAMPM(setTime);
-        //clk.setAlarm(hr,min,amPM,);
-        clk.setAlarm(hr, min, amPM, 1);
         
+        if(alarm1SetTime.getText() != null){
+        // Set alarm 1 time
+            System.out.println("In button 1 press");
+            String setTime = alarm1SetTime.getText();
+            int hr = parseAlarmHr(setTime);
+            int min = parseAlarmMin(setTime);
+            String amPM = parseAlarmAMPM(setTime);
+        //clk.setAlarm(hr,min,amPM,);
+            System.out.println("Got to set alarm");
+            clk.setAlarm(hr, min, amPM, 1);
+        }
         //alarm1Time.setText(clk.checkAlarmInfo(1));
         
         //clk.setAlarm(hr, min, , hr);
@@ -178,7 +198,20 @@ public class AlarmClockUIController implements Initializable {
         alarm1ActiveText.setText("Hello!");
     }
     
-   
+    @FXML
+    public void setRadioVol(ActionEvent e){
+        
+        System.out.println("In radio vol set");
+        radio.setVolume(Integer.parseInt(rVolText.getText()));
+        System.out.println(radio.getVolume());
+    }
+    
+    @FXML
+    public void setRadioFreq(ActionEvent e){
+        radio.setStation(new Station(Float.parseFloat(rFreqText.getText())));
+        //radio.setStation(new Station(Integer.parseInt(rFreqText.getText())));
+        System.out.println(radio.getStation());
+    }
     
     
 }

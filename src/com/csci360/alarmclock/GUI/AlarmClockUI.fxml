@@ -76,8 +76,8 @@
                         <ToggleButton layoutX="465.0" layoutY="279.0" mnemonicParsing="false" text="Alarm 2 Active TEST" />
                         <TextField fx:id="alarm1SetTime" layoutX="14.0" layoutY="322.0" promptText="Set Alarm Time" />
                         <TextField fx:id="alarm2SetTime" layoutX="437.0" layoutY="322.0" promptText="Set Alarm Time" />
-                        <Button layoutX="170.0" layoutY="322.0" mnemonicParsing="false" onAction="#setAlarm1Time" text="Set Alarm 1" />
-                        <Button layoutX="351.0" layoutY="322.0" mnemonicParsing="false" onAction="#setAlarm2Time" text="Set Alarm 2" />
+                        <Button fx:id="setAlarm1Button" layoutX="170.0" layoutY="322.0" mnemonicParsing="false" onAction="#setAlarm1Time" text="Set Alarm 1" />
+                        <Button fx:id="setAlarm2Button" layoutX="351.0" layoutY="322.0" mnemonicParsing="false" onAction="#setAlarm2Time" text="Set Alarm 2" />
                      </children>
                   </AnchorPane>
             </content>
@@ -86,18 +86,20 @@
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <Slider layoutX="40.0" layoutY="215.0" orientation="VERTICAL" />
-                        <Text layoutX="12.0" layoutY="206.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Volume" wrappingWidth="112.79296875">
+                        <Slider fx:id="rVolSlider" layoutX="40.0" layoutY="215.0" onDragDone="#setRadioVol" orientation="VERTICAL" showTickLabels="true" />
+                        <Text layoutX="11.0" layoutY="179.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Volume" wrappingWidth="112.79296875">
                            <font>
                               <Font size="22.0" />
                            </font>
                         </Text>
-                        <Text layoutX="199.0" layoutY="209.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Frequency">
+                        <Text layoutX="199.0" layoutY="179.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Frequency">
                            <font>
                               <Font size="22.0" />
                            </font>
                         </Text>
-                        <Slider layoutX="242.0" layoutY="215.0" orientation="VERTICAL" />
+                        <Slider fx:id="rFreqSlider" layoutX="242.0" layoutY="215.0" orientation="VERTICAL" />
+                        <TextField fx:id="rVolText" layoutX="11.0" layoutY="187.0" onAction="#setRadioVol" prefHeight="25.0" prefWidth="72.0" />
+                        <TextField fx:id="rFreqText" layoutX="213.0" layoutY="187.0" onAction="#setRadioFreq" prefHeight="25.0" prefWidth="72.0" />
                      </children>
                   </AnchorPane>
               </content>
