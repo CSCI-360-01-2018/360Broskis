@@ -33,10 +33,10 @@ public class Alarm {
     }
     public String getAlarmInfo() {
         if(minute<10){
-            info = String.format("%d:0%d %s %s",hour,minute,amPm, active);
+            info = String.format("%d:0%d %s",hour,minute,amPm, active);
         }
         else{
-            info = String.format("%d:%d %s %s",hour,minute,amPm, active);
+            info = String.format("%d:%d %s",hour,minute,amPm, active);
         }
          return info;
     }
