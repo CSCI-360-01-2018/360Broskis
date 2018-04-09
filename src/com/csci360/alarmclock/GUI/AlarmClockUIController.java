@@ -64,14 +64,9 @@ public class AlarmClockUIController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
-   @FXML
-    public void checkTime(ActionEvent e){
         clk = new Clock();
-        timer = new Timer();
         clockField.setText(clk.getTime());
-        System.out.println("Hi");
-        
+        timer = new Timer();
         timer.scheduleAtFixedRate(new TimerTask() {
            @Override
            public void run()
@@ -79,7 +74,22 @@ public class AlarmClockUIController implements Initializable {
              clockField.setText(clk.getTime());   
            }
         }, 10000, 10000);
-        
+    }    
+   @FXML
+    public void checkTime(ActionEvent e){
+        //clk = new Clock();
+        //timer = new Timer();
+        clockField.setText(clk.getTime());
+        System.out.println("Hi");
+        /*
+        timer.scheduleAtFixedRate(new TimerTask() {
+           @Override
+           public void run()
+           {
+             clockField.setText(clk.getTime());   
+           }
+        }, 10000, 10000);
+        */
         
     }
     
