@@ -103,12 +103,22 @@ public class Clock{
         }
     }
     public void checkAlarm() {
-         if(alarm1.getAlarmInfo().equals(String.format("%d:%d %s",hour,minute,amPm))) {
-            System.out.println("Alarm1 goes off...");
-         }
-         else if(alarm2.getAlarmInfo().equals(String.format("%d:%d %s",hour,minute,amPm))) {
-            System.out.println("Alarm2 goes off...");
-         }
+        if(minute < 10){
+            if(alarm1.getAlarmInfo().equals(String.format("%d:0%d %s",hour,minute,amPm))) {
+                System.out.println("Alarm1 goes off...");
+            }
+            else if(alarm2.getAlarmInfo().equals(String.format("%d:0%d %s",hour,minute,amPm))) {
+                System.out.println("Alarm2 goes off...");
+            }
+        }
+        else{
+            if(alarm1.getAlarmInfo().equals(String.format("%d:%d %s",hour,minute,amPm))) {
+                System.out.println("Alarm1 goes off...");
+            }
+            else if(alarm2.getAlarmInfo().equals(String.format("%d:%d %s",hour,minute,amPm))) {
+                System.out.println("Alarm2 goes off...");
+            }
+        }
     }
 
     public void activateAlarm(int alarm, boolean active){
@@ -130,6 +140,22 @@ public class Clock{
     
     public void setMinute(int min){
         minute = min;
+    }
+    
+    public void alignTime(){
+        if(hour > 12){
+            hour %= 12;
+            switchAMPM(amPm);
+        }
+    }
+    
+    private void switchAMPM(String amPM){
+        if(amPM.equals("AM")){
+            amPm = "PM";
+        }
+        else if(amPM.equals("PM")){
+            amPm = "AM";
+        }
     }
     
 }

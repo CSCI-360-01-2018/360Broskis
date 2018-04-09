@@ -86,12 +86,14 @@ public class AlarmClockUIController implements Initializable {
     @FXML
     public void setHourUp(ActionEvent e){
         clk.setHour(clk.getHour()+1);
+        clk.alignTime();
         clockField.setText(clk.getTime());
     }
     
     @FXML
     public void setHourDown(ActionEvent e){
         clk.setHour(clk.getHour()-1);
+        clk.alignTime();
         clockField.setText(clk.getTime());
     }
     
@@ -126,7 +128,16 @@ public class AlarmClockUIController implements Initializable {
     
     @FXML
     public void setAlarm1Time(ActionEvent e){
+        if(alarm1SetTime.getText() != null){
+        // Set alarm 1 time
+            String setTime = alarm1SetTime.getText();
+            ParseAlarmTime alarmOneSettings = new ParseAlarmTime(setTime);
+            int[] alarmTimes = alarmOneSettings.getAlarmTimes();
+            String amPm = alarmOneSettings.getAlarmAmPm();
+            clk.setAlarm(alarmTimes[0], alarmTimes[1], amPm, 1);
         
+            alarm1Time.setText(clk.checkAlarmInfo(1));
+        /*
         if(alarm1SetTime.getText() != null){
         // Set alarm 1 time
             System.out.println("In button 1 press");
@@ -141,12 +152,15 @@ public class AlarmClockUIController implements Initializable {
         //alarm1Time.setText(clk.checkAlarmInfo(1));
         
         //clk.setAlarm(hr, min, , hr);
+        */
+        }
     }
     
    
     
     @FXML
     public void setAlarm2Time(ActionEvent e){
+        /*
         //Set Alarm 2 Time
         String setTime = alarm1SetTime.getText();
         int hr = parseAlarmHr(setTime);
@@ -155,9 +169,17 @@ public class AlarmClockUIController implements Initializable {
         //clk.setAlarm(hr,min,amPM,);
         clk.setAlarm(hr, min, amPM, 2);
         //alarm2Time.setText(clk.checkAlarmInfo(2));
+        */
+        String setTime = alarm2SetTime.getText();
+        ParseAlarmTime alarmTwoSettings = new ParseAlarmTime(setTime);
+        int[] alarmTimes = alarmTwoSettings.getAlarmTimes();
+        String amPm = alarmTwoSettings.getAlarmAmPm();
+        clk.setAlarm(alarmTimes[0], alarmTimes[1], amPm, 2);
+        
+        alarm2Time.setText(clk.checkAlarmInfo(2));
     }
 
-    
+    /*
     private int parseAlarmHr(String alarmStr){
         String parseAlarmStr = alarmStr;
         String[] splitStr;
@@ -178,6 +200,7 @@ public class AlarmClockUIController implements Initializable {
         splitStr = parseAlarmStr.split(" ");
         return splitStr[1];
     }
+*/
     
     private void updateTime(){
         int min = clk.getMinute();
@@ -215,3 +238,29 @@ public class AlarmClockUIController implements Initializable {
     
     
 }
+
+class ParseAlarmTime{
+        int hour,min;
+        String amPm;
+        public ParseAlarmTime(String alarmStr){
+            String[] splitStr = alarmStr.split(":");
+            hour = Integer.parseInt(splitStr[0]);
+            String rightHalfOfAlarmStr = splitStr[1];
+            String[] minAmPm = rightHalfOfAlarmStr.split(" ");
+            min = Integer.parseInt(minAmPm[0]);
+            amPm = minAmPm[1];
+            System.out.println(hour);
+            System.out.println(min);
+            System.out.println(amPm);
+            
+            
+        }
+ 
+        public int[] getAlarmTimes(){
+            int[] alarmTime = {hour,min};
+            return alarmTime;
+        }
+        public String getAlarmAmPm(){
+            return amPm;
+        }
+    }
