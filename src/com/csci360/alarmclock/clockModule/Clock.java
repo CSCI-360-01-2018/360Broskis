@@ -54,7 +54,7 @@ public class Clock{
                 }
                 checkAlarm();
             }
-        }, 10, 10);
+        }, 10000, 10000);
     }
 
     public void updateTime(int hour, int minute, String amPm) {
@@ -103,12 +103,22 @@ public class Clock{
         }
     }
     public void checkAlarm() {
-         if(alarm1.getAlarmInfo().equals(String.format("%d:%d %s",hour,minute,amPm))) {
-            System.out.println("Alarm1 goes off...");
-         }
-         else if(alarm2.getAlarmInfo().equals(String.format("%d:%d %s",hour,minute,amPm))) {
-            System.out.println("Alarm2 goes off...");
-         }
+        if(minute < 10){
+            if(alarm1.getAlarmInfo().equals(String.format("%d:0%d %s",hour,minute,amPm))) {
+                System.out.println("Alarm1 goes off...");
+            }
+            else if(alarm2.getAlarmInfo().equals(String.format("%d:0%d %s",hour,minute,amPm))) {
+                System.out.println("Alarm2 goes off...");
+            }
+        }
+        else{
+            if(alarm1.getAlarmInfo().equals(String.format("%d:%d %s",hour,minute,amPm))) {
+                System.out.println("Alarm1 goes off...");
+            }
+            else if(alarm2.getAlarmInfo().equals(String.format("%d:%d %s",hour,minute,amPm))) {
+                System.out.println("Alarm2 goes off...");
+            }
+        }
     }
 
     public void activateAlarm(int alarm, boolean active){
@@ -123,4 +133,39 @@ public class Clock{
     public void terminateClock() {
         clock.cancel();
     }
+    
+    public void setHour(int hr){
+        hour = hr;
+    }
+    
+    public void setMinute(int min){
+        minute = min;
+    }
+    
+    public void alignTime(){
+        if(hour > 12){
+            hour %= 12;
+            switchAMPM(amPm);
+        }
+    }
+    
+    private void switchAMPM(String amPM){
+        if(amPM.equals("AM")){
+            amPm = "PM";
+        }
+        else if(amPM.equals("PM")){
+            amPm = "AM";
+        }
+    }
+    
+    public Alarm getAlarm(int alarmNum){
+        if(alarmNum == 1){
+            return alarm1;
+        }
+        else if(alarmNum == 2){
+            return alarm2;
+        }
+        return null;
+    }
+    
 }

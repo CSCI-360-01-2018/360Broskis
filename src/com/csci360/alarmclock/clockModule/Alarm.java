@@ -20,6 +20,7 @@ public class Alarm {
     private String toneTest;
     private boolean active;
     private Media tone;
+    private String info;
 
     public void setAlarmTime(int hr, int min, String amPm) {
         hour = hr;
@@ -31,7 +32,12 @@ public class Alarm {
         this.active = active;
     }
     public String getAlarmInfo() {
-         String info = String.format("%d:%d %s",hour,minute,amPm);
+        if(minute<10){
+            info = String.format("%d:0%d %s",hour,minute,amPm, active);
+        }
+        else{
+            info = String.format("%d:%d %s",hour,minute,amPm, active);
+        }
          return info;
     }
 
@@ -58,4 +64,21 @@ public class Alarm {
         toneTest = "Wake up";
         return toneTest;
     }
+    
+    
+    public void alignTime(){
+        if(hour > 12){
+            hour %= 12;
+            //switchAMPM(amPm);
+        }
+    }
+    private void switchAMPM(String amPM){
+        if(amPM.equals("AM")){
+            amPm = "PM";
+        }
+        else if(amPM.equals("PM")){
+            amPm = "AM";
+        }
+    }
+
 }
