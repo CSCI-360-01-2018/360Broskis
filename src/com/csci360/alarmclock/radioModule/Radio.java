@@ -15,6 +15,7 @@ public class Radio {
     private boolean active;
 
     public Radio() {
+        
     }
     
     public void setActive(boolean Active) {
@@ -29,7 +30,7 @@ public class Radio {
         volume.setVolume(vol);
     }
     
-    public int getVolume(){
+    public int getVolume() {
         return volume.getVolume();
     }
 
@@ -37,7 +38,7 @@ public class Radio {
         this.station.setStation(station.getFrequency());
     }
     
-    public float getStation(){
+    public float getStation() {
         return station.getFrequency();
     }
 }
