@@ -40,7 +40,7 @@ public class AlarmClockUIController implements Initializable {
     private Clock clk;// = new Clock();
     private Alarm testAlarm = new Alarm();
     //private Alarm alarm2 = new Alarm();
-    private com.csci360.alarmclock.radioModule.Radio radio = new Radio();
+    private Radio radio;// = new Radio();
     
     private Timer timer;
     
@@ -62,6 +62,9 @@ public class AlarmClockUIController implements Initializable {
     @FXML private TextField rFreqText;
     @FXML private Slider rVolSlider;
     @FXML private Slider rFreqSlider;
+    @FXML private CheckBox radioActiveCheck;
+    
+    private double prevStation;
     
     
     /**
@@ -70,6 +73,7 @@ public class AlarmClockUIController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        radio = new Radio();
     }    
    @FXML
     public void checkTime(ActionEvent e){
@@ -186,23 +190,52 @@ public class AlarmClockUIController implements Initializable {
         testAlarm.activateAlarm(true);
         testAlarm.ring();
     }
+    
+    @FXML
+    public void setRadioActive(ActionEvent e) {
+        radio.setActive(radioActiveCheck.isSelected());
+        if(!radio.getActive()) {
+            Station sta = new Station(0.0, "TEMP");
+            double d = Double.parseDouble(rFreqText.getText());
+            radio.findStation(d).clearStation();
+        }
+    }
    
     
     @FXML
     public void setRadioVol(ActionEvent e) {
+        //Station sta = radio.findStation( Double.parseDouble(rFreqText.getText()) );
+        //System.out.println("In radio vol set");
         
-        System.out.println("In radio vol set");
-        radio.setVolume(Integer.parseInt(rVolText.getText()));
-        System.out.println(radio.getVolume());
+        radio.findStation( Double.parseDouble(rFreqText.getText()) ).getMediaPlayer().setVolume( Double.parseDouble(rVolText.getText()) * .01);
+        //radio.findStation( Double.parseDouble(rFreqText.getText()) ).setMediaVol( Double.parseDouble(rVolText.getText()));
     }
     
     @FXML
     public void setRadioFreq(ActionEvent e) {
-        radio.setStation(new Station(Float.parseFloat(rFreqText.getText())));
+        if(radio.findStation(prevStation) != null) {
+            radio.findStation(prevStation).getMediaPlayer().stop();
+        }
+        if(radio.getActive()) {
+            //radio.setStation(new Station(Double.parseDouble(rFreqText.getText())), "");
+            double d = Double.parseDouble((rFreqText.getText()));
+            Station sta = new Station(d, "TEMP");
+            if(d % 1 == 0)
+                sta = new Station(d, "AM");
+            else if(d % 1 != 0)
+                sta = new Station(d, "FM");
+
+            if(radio.findStation(d) != null) {
+                    //radio.findStation(d).clearStation();
+                radio.findStation(d).playStation();
+                prevStation = d;
+            }
+        }
+        //radio.g
         //radio.setStation(new Station(Integer.parseInt(rFreqText.getText())));
-        System.out.println(radio.getStation());
+        //System.out.println(radio.getStation());
     }
-}
+
 
 class ParseAlarmTime {
     int hour,min;
@@ -236,4 +269,5 @@ class Sound {
     Media hit = new Media(new File(song).toURI().toString());
     MediaPlayer mediaPlayer = new MediaPlayer(hit);
     // mediaPlayer.play();
+}
 }

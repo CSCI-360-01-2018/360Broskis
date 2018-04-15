@@ -11,7 +11,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.csci360.alarmclock.GUI.AlarmClockUIController">
+<AnchorPane id="AnchorPane" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.csci360.alarmclock.GUI.AlarmClockUIController">
    <children>
       <TabPane prefHeight="400.0" prefWidth="800.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <tabs>
@@ -100,6 +100,11 @@
                         <Slider fx:id="rFreqSlider" layoutX="242.0" layoutY="215.0" orientation="VERTICAL" />
                         <TextField fx:id="rVolText" layoutX="11.0" layoutY="187.0" onAction="#setRadioVol" prefHeight="25.0" prefWidth="72.0" />
                         <TextField fx:id="rFreqText" layoutX="213.0" layoutY="187.0" onAction="#setRadioFreq" prefHeight="25.0" prefWidth="72.0" />
+                        <CheckBox fx:id="radioActiveCheck" layoutX="88.0" layoutY="14.0" mnemonicParsing="false" onAction="#setRadioActive" text="Radio Active">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </CheckBox>
                      </children>
                   </AnchorPane>
               </content>
