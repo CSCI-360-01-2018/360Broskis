@@ -9,7 +9,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.Initializable;
 import javafx.fxml.FXML;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.text.Text;
 import javafx.event.ActionEvent;
 import javafx.util.Duration;  
@@ -46,6 +46,7 @@ public class AlarmClockUIController implements Initializable {
     private Text alarm1ActiveText;
     @FXML private TextField textF;
     @FXML private TextField clockField;
+    @FXML private TextArea  clockTextArea;
     @FXML private CheckBox alarm1ActCheck;
     @FXML private CheckBox alarm2ActCheck;
     @FXML private TextField alarm1SetTime;
@@ -73,14 +74,16 @@ public class AlarmClockUIController implements Initializable {
     public void checkTime(ActionEvent e){
         clk = new Clock();
         timer = new Timer();
-        clockField.setText(clk.getTime());
+        //clockField.setText(clk.getTime());
+        clockTextArea.setText(clk.getTime());
         System.out.println("Hi");
         
         timer.scheduleAtFixedRate(new TimerTask() {
            @Override
            public void run()
            {
-             clockField.setText(clk.getTime());   
+             //clockField.setText(clk.getTime()); 
+             clockTextArea.setText(clk.getTime());
            }
         }, 10000, 10000);
         
@@ -91,26 +94,32 @@ public class AlarmClockUIController implements Initializable {
     public void setHourUp(ActionEvent e){
         clk.setHour(clk.getHour()+1);
         clk.alignTime();
-        clockField.setText(clk.getTime());
+        //clockField.setText(clk.getTime());
+        clockTextArea.setText(clk.getTime());
     }
     
     @FXML
     public void setHourDown(ActionEvent e){
         clk.setHour(clk.getHour()-1);
         clk.alignTime();
-        clockField.setText(clk.getTime());
+        //clockField.setText(clk.getTime());
+        clockTextArea.setText(clk.getTime());
     }
     
     @FXML
     public void setMinuteUp(ActionEvent e){
+       
         clk.setMinute(clk.getMinute()+1);
-        clockField.setText(clk.getTime());
+        
+        //clockField.setText(clk.getTime());
+        clockTextArea.setText(clk.getTime());
     }
     
     @FXML
     public void setMinuteDown(ActionEvent e){
         clk.setMinute(clk.getMinute()-1);
-        clockField.setText(clk.getTime());
+        //clockField.setText(clk.getTime());
+        clockTextArea.setText(clk.getTime());
     }
     
     @FXML
@@ -125,8 +134,10 @@ public class AlarmClockUIController implements Initializable {
     public void alarm2Active(ActionEvent e){
         //alarm2.activateAlarm(alarm2ActCheck.isSelected());
         clk.activateAlarm(2,alarm2ActCheck.isSelected());
+        
+        
         //clk.
-        System.out.println(clk.checkAlarmInfo(2));
+        //System.out.println(clk.checkAlarmInfo(2));
     }
     
     
@@ -146,8 +157,6 @@ public class AlarmClockUIController implements Initializable {
         }
     }
     
-   
-    
     @FXML
     public void setAlarm2Time(ActionEvent e){
         
@@ -162,8 +171,6 @@ public class AlarmClockUIController implements Initializable {
         alarm2Time.setText(clk.checkAlarmInfo(2));
     }
 
-    
-    
     private void updateTime(){
         int min = clk.getMinute();
         int hr = clk.getHour();
@@ -179,9 +186,11 @@ public class AlarmClockUIController implements Initializable {
     }
     
     @FXML
-    public void alarm1ActiveText(){
+    public void alarmTest(){
+        testAlarm.activateAlarm(true);
         testAlarm.ring();
     }
+   
     
     @FXML
     public void setRadioVol(ActionEvent e){
@@ -214,8 +223,7 @@ class ParseAlarmTime{
             System.out.println(hour);
             System.out.println(min);
             System.out.println(amPm);
-            
-            
+    
         }
  
         public int[] getAlarmTimes(){

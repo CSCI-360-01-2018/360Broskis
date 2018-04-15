@@ -25,7 +25,7 @@ public class Clock{
 
     public Clock() {
         minute = 0;
-        hour = 8;
+        hour = 12;
         amPm = "AM";
         alarm1 = new Alarm();
         alarm1.setAlarmTime(12, 0, "AM");
@@ -105,21 +105,21 @@ public class Clock{
     public void checkAlarm() {
         if(minute < 10){
             if(alarm1.getAlarmInfo().equals(String.format("%d:0%d %s",hour,minute,amPm))) {
-                System.out.println("Alarm1 goes off...");
+                //System.out.println("Alarm1 goes off...");
                 alarm1.ring();
             }
             else if(alarm2.getAlarmInfo().equals(String.format("%d:0%d %s",hour,minute,amPm))) {
-                System.out.println("Alarm2 goes off...");
+                //System.out.println("Alarm2 goes off...");
                 alarm2.ring();
             }
         }
         else{
             if(alarm1.getAlarmInfo().equals(String.format("%d:%d %s",hour,minute,amPm))) {
-                System.out.println("Alarm1 goes off...");
+                //System.out.println("Alarm1 goes off...");
                 alarm1.ring();
             }
             else if(alarm2.getAlarmInfo().equals(String.format("%d:%d %s",hour,minute,amPm))) {
-                System.out.println("Alarm2 goes off...");
+                //System.out.println("Alarm2 goes off...");
                 alarm2.ring();
             }
         }
@@ -139,10 +139,34 @@ public class Clock{
     }
     
     public void setHour(int hr){
+        if(hr == 13){
+            if (amPm.equals("AM")){
+                amPm = "PM";
+            }
+            else{
+                amPm = "AM";
+            }
+            hr = 1;
+        }
+        else if(hr == 0){
+            if (amPm.equals("AM")){
+                amPm = "PM";
+            }
+            else{
+                amPm = "AM";
+            }
+            hr = 12;
+        }
         hour = hr;
     }
     
     public void setMinute(int min){
+        if (min == 60){
+            min = 0;
+        }
+        else if(min < 0){
+            min = 59;
+        }
         minute = min;
     }
     

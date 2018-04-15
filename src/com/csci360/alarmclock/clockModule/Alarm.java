@@ -65,6 +65,7 @@ public class Alarm  {
     }
 
     public String ring() {
+        System.out.println("Ring is Called");
         if(active){
         //System.out.println("Wake up");
             File file=new File("alarmSound.mp3");
