@@ -21,6 +21,7 @@ import com.csci360.alarmclock.clockModule.Alarm;
 import com.csci360.alarmclock.clockModule.Clock;
 import com.csci360.alarmclock.radioModule.Radio;
 import com.csci360.alarmclock.radioModule.Station;
+import java.io.File;
 import java.text.NumberFormat;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -137,7 +138,6 @@ public class AlarmClockUIController implements Initializable {
         //System.out.println(clk.checkAlarmInfo(2));
     }
     
-    
     @FXML
     public void setAlarm1Time(ActionEvent e){
         if(alarm1SetTime.getText() != null){
@@ -150,7 +150,6 @@ public class AlarmClockUIController implements Initializable {
             clk.getAlarm(1).alignTime();
         
             alarm1Time.setText(clk.checkAlarmInfo(1));
-        
         }
     }
     
@@ -190,7 +189,7 @@ public class AlarmClockUIController implements Initializable {
    
     
     @FXML
-    public void setRadioVol(ActionEvent e){
+    public void setRadioVol(ActionEvent e) {
         
         System.out.println("In radio vol set");
         radio.setVolume(Integer.parseInt(rVolText.getText()));
@@ -198,33 +197,43 @@ public class AlarmClockUIController implements Initializable {
     }
     
     @FXML
-    public void setRadioFreq(ActionEvent e){
+    public void setRadioFreq(ActionEvent e) {
         radio.setStation(new Station(Float.parseFloat(rFreqText.getText())));
         //radio.setStation(new Station(Integer.parseInt(rFreqText.getText())));
         System.out.println(radio.getStation());
     }
 }
 
-class ParseAlarmTime{
-        int hour,min;
-        String amPm;
-        public ParseAlarmTime(String alarmStr){
-            String[] splitStr = alarmStr.split(":");
-            hour = Integer.parseInt(splitStr[0]);
-            String rightHalfOfAlarmStr = splitStr[1];
-            String[] minAmPm = rightHalfOfAlarmStr.split(" ");
-            min = Integer.parseInt(minAmPm[0]);
-            amPm = minAmPm[1];
-            System.out.println(hour);
-            System.out.println(min);
-            System.out.println(amPm);
-        }
- 
-        public int[] getAlarmTimes(){
-            int[] alarmTime = {hour,min};
-            return alarmTime;
-        }
-        public String getAlarmAmPm(){
-            return amPm;
-        }
+class ParseAlarmTime {
+    int hour,min;
+    String amPm;
+    public ParseAlarmTime(String alarmStr) {
+        String[] splitStr = alarmStr.split(":");
+        hour = Integer.parseInt(splitStr[0]);
+        String rightHalfOfAlarmStr = splitStr[1];
+        String[] minAmPm = rightHalfOfAlarmStr.split(" ");
+        min = Integer.parseInt(minAmPm[0]);
+        amPm = minAmPm[1];
+        System.out.println(hour);
+        System.out.println(min);
+        System.out.println(amPm);
     }
+
+    public int[] getAlarmTimes(){
+        int[] alarmTime = {hour,min};
+        return alarmTime;
+    }
+    public String getAlarmAmPm(){
+        return amPm;
+    }
+}
+
+class Sound {
+    // temp. classes and functions to use Media and MediaLibrary imports
+    
+    String song = "";
+
+    Media hit = new Media(new File(song).toURI().toString());
+    MediaPlayer mediaPlayer = new MediaPlayer(hit);
+    // mediaPlayer.play();
+}
