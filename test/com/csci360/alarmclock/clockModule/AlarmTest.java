@@ -67,6 +67,7 @@ public class AlarmTest {
     /**
      * Test of ring method, of class Alarm.
      */
+    /**
     @Test
     public void testRing() {
         System.out.println("ring");
@@ -80,7 +81,7 @@ public class AlarmTest {
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
-
+    */
     /**
      * Test of compareTime method, of class Alarm.
      */
@@ -115,4 +116,15 @@ public class AlarmTest {
         fail("The test case is a prototype.");
     }
     
+    @Test
+    public void testRings(){
+        System.out.println("Test the ringer");
+        Alarm instance = new Alarm();
+        System.out.println("Hopefully the alarm will sound");
+        instance.ring();
+        System.out.println("method has been run for ring");
+        
+    }
+    
+   
 }

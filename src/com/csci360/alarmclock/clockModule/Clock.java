@@ -106,17 +106,21 @@ public class Clock{
         if(minute < 10){
             if(alarm1.getAlarmInfo().equals(String.format("%d:0%d %s",hour,minute,amPm))) {
                 System.out.println("Alarm1 goes off...");
+                alarm1.ring();
             }
             else if(alarm2.getAlarmInfo().equals(String.format("%d:0%d %s",hour,minute,amPm))) {
                 System.out.println("Alarm2 goes off...");
+                alarm2.ring();
             }
         }
         else{
             if(alarm1.getAlarmInfo().equals(String.format("%d:%d %s",hour,minute,amPm))) {
                 System.out.println("Alarm1 goes off...");
+                alarm1.ring();
             }
             else if(alarm2.getAlarmInfo().equals(String.format("%d:%d %s",hour,minute,amPm))) {
                 System.out.println("Alarm2 goes off...");
+                alarm2.ring();
             }
         }
     }

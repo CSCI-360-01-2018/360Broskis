@@ -4,23 +4,28 @@
  * and open the template in the editor.
  */
 package com.csci360.alarmclock.clockModule;
-
+import javafx.application.Application;
 import com.csci360.alarmclock.clockModule.Clock;
 import java.io.File;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
+import javafx.util.Duration;  
+import javafx.scene.media.Media;  
+import javafx.scene.media.MediaPlayer; 
 
 /**
  *
  * @author Austin
  */
-public class Alarm {
+public class Alarm  {
     private int hour,minute;
     private String amPm;
     private String toneTest;
     private boolean active;
     private Media tone;
     private String info;
+    
+    
 
     public void setAlarmTime(int hr, int min, String amPm) {
         hour = hr;
@@ -61,10 +66,13 @@ public class Alarm {
 
     public String ring() {
         //System.out.println("Wake up");
+        File file=new File("alarmSound.mp3");
+        Media m = new Media(file.toURI().toString());
+        MediaPlayer player = new MediaPlayer(m);
+        player.play();
         toneTest = "Wake up";
         return toneTest;
     }
-    
     
     public void alignTime(){
         if(hour > 12){
