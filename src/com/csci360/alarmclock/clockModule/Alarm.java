@@ -65,12 +65,15 @@ public class Alarm  {
     }
 
     public String ring() {
+        if(active){
         //System.out.println("Wake up");
-        File file=new File("alarmSound.mp3");
-        Media m = new Media(file.toURI().toString());
-        MediaPlayer player = new MediaPlayer(m);
-        player.play();
-        toneTest = "Wake up";
+            File file=new File("alarmSound.mp3");
+            Media m = new Media(file.toURI().toString());
+            MediaPlayer player = new MediaPlayer(m);
+            player.play();
+            toneTest = "Wake up";
+            return toneTest;
+        }
         return toneTest;
     }
     

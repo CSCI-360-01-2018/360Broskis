@@ -30,6 +30,7 @@ private Stage primaryStage;
 public void start(Stage primaryStage) {
 
 mainWindow(primaryStage);  
+primaryStage.setOnCloseRequest(e -> System.exit(0));
 }
 
 public void mainWindow(Stage primaryStage) {
