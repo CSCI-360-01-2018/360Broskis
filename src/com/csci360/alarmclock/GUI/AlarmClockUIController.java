@@ -80,14 +80,11 @@ public class AlarmClockUIController implements Initializable {
         
         timer.scheduleAtFixedRate(new TimerTask() {
            @Override
-           public void run()
-           {
+           public void run() {
              //clockField.setText(clk.getTime()); 
              clockTextArea.setText(clk.getTime());
            }
         }, 10000, 10000);
-        
-        
     }
     
     @FXML
@@ -206,8 +203,6 @@ public class AlarmClockUIController implements Initializable {
         //radio.setStation(new Station(Integer.parseInt(rFreqText.getText())));
         System.out.println(radio.getStation());
     }
-    
-    
 }
 
 class ParseAlarmTime{
@@ -223,7 +218,6 @@ class ParseAlarmTime{
             System.out.println(hour);
             System.out.println(min);
             System.out.println(amPm);
-    
         }
  
         public int[] getAlarmTimes(){

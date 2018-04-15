@@ -15,6 +15,7 @@ public class Radio {
     private boolean active;
 
     public Radio() {
+        
     }
     
     public void setActive(boolean Active) {
