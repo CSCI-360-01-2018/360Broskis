@@ -37,8 +37,8 @@ import javafx.scene.input.DragEvent;
  */
 public class AlarmClockUIController implements Initializable {
     private Clock clk;// = new Clock();
-    private Alarm alarm1 = new Alarm();
-    private Alarm alarm2 = new Alarm();
+    private Alarm testAlarm = new Alarm();
+    //private Alarm alarm2 = new Alarm();
     private com.csci360.alarmclock.radioModule.Radio radio = new Radio();
     
     private Timer timer;
@@ -180,7 +180,7 @@ public class AlarmClockUIController implements Initializable {
     
     @FXML
     public void alarm1ActiveText(){
-        alarm1ActiveText.setText("Hello!");
+        testAlarm.ring();
     }
     
     @FXML

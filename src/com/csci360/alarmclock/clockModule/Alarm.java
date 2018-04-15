@@ -69,7 +69,11 @@ public class Alarm  {
         File file=new File("alarmSound.mp3");
         Media m = new Media(file.toURI().toString());
         MediaPlayer player = new MediaPlayer(m);
-        player.play();
+        
+        if (active == true){
+            player.play();
+        }
+        
         toneTest = "Wake up";
         return toneTest;
     }
