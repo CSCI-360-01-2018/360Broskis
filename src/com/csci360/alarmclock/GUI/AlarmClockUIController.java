@@ -68,10 +68,13 @@ public class AlarmClockUIController implements Initializable {
     @FXML private Slider rVolSlider;
     @FXML private Slider rFreqSlider;
     @FXML private CheckBox radioActiveCheck;
+    @FXML private ChoiceBox radioStationChoice;
+    @FXML private Button setRadioStationButton;
     
     private double prevStation;
     
     private ObservableList<String> alarmToneList = FXCollections.observableArrayList();
+    private ObservableList<String> radioStationList = FXCollections.observableArrayList();
     
     /**
      * Initializes the controller class.
@@ -85,16 +88,14 @@ public class AlarmClockUIController implements Initializable {
         alarmToneList.add("saygoodbye.mp3");
         alarmToneList.add("legionofmonsters.mp3");
         alarmToneList.add("messengerofgod.mp3");
-        alarmSetTone.setItems(alarmToneList);
-        /*
-        alarmSetTone1.getItems().add("alarmSound.mp3");
-        alarmSetTone1.getItems().add("ghostdivision.mp3");
-        alarmSetTone1.getItems().add("saygoodbye.mp3");
-        alarmSetTone1.getItems().add("legionofmonsters.mp3");
-        alarmSetTone1.getItems().add("messengerofgod.mp3");
-        */
-        
+        alarmSetTone.setItems(alarmToneList);       
         alarmSetTone.setValue("alarmSound.mp3");
+        //
+        radioStationList.add("102.7");
+        radioStationList.add("103.5");
+        radioStationList.add("750");
+        radioStationList.add("1030");
+        radioStationChoice.setItems(radioStationList);
         
     }    
    @FXML
@@ -251,6 +252,7 @@ public class AlarmClockUIController implements Initializable {
     
     @FXML
     public void setRadioFreq(ActionEvent e) {
+        rFreqText.setText(radioStationChoice.getValue().toString());
         if(radio.findStation(prevStation) != null) {
             radio.findStation(prevStation).getMediaPlayer().stop();
         }
