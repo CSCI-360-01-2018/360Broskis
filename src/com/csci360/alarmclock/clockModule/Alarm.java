@@ -20,9 +20,7 @@ import javafx.scene.media.MediaPlayer;
 public class Alarm {
     private int hour,minute;
     private String amPm;
-    private String toneTest;
     private boolean active;
-    private Media tone;
     private String info;
     private boolean testPlaying;
     File file=new File("alarmSound.mp3");
@@ -31,6 +29,8 @@ public class Alarm {
     
 
     public void setAlarmTime(int hr, int min, String amPm) {
+        //System.out.println(amPm);
+        
         if(hr >= 13){
             System.out.println("Invalid Hour");
             hr = 12;
@@ -41,7 +41,12 @@ public class Alarm {
             min = 0;
         }
         
-        if(!(amPm.equals("AM") || amPm.equals("PM"))) {
+        if(amPm.equals("")){
+            System.out.println("Invalid AM/PM");
+            amPm = "AM";
+        }
+        
+        else if(!(amPm.equals("AM") || amPm.equals("PM"))) {
             System.out.println("Invalid AM/PM");
             amPm = "AM";
         }
@@ -143,15 +148,6 @@ public class Alarm {
         if(hour > 12){
             hour %= 12;
             //switchAMPM(amPm);
-        }
-    }
-    
-    private void switchAMPM(String amPM) {
-        if(amPM.equals("AM")) {
-            amPm = "PM";
-        }
-        else if(amPM.equals("PM")) {
-            amPm = "AM";
         }
     }
 }

@@ -204,7 +204,7 @@ public class AlarmClockUIController implements Initializable {
             int[] alarmTimes = alarmOneSettings.getAlarmTimes();
             String amPm = alarmOneSettings.getAlarmAmPm();
             clk.setAlarm(alarmTimes[0], alarmTimes[1], amPm, 1);
-            clk.getAlarm(1).alignTime();
+            //clk.getAlarm(1).alignTime();
         
             alarm1Time.setText(clk.checkAlarmInfo(1));
         }
@@ -217,9 +217,10 @@ public class AlarmClockUIController implements Initializable {
         ParseAlarmTime alarmTwoSettings = new ParseAlarmTime(setTime);
         int[] alarmTimes = alarmTwoSettings.getAlarmTimes();
         String amPm = alarmTwoSettings.getAlarmAmPm();
+        System.out.println(amPm);
         clk.setAlarm(alarmTimes[0], alarmTimes[1], amPm, 2);
         
-        clk.getAlarm(2).alignTime();
+        //clk.getAlarm(2).alignTime();
         
         alarm2Time.setText(clk.checkAlarmInfo(2));
     }
@@ -327,15 +328,56 @@ class ParseAlarmTime {
     int hour,min;
     String amPm;
     public ParseAlarmTime(String alarmStr) {
+        System.out.println(alarmStr.length());
+        if(alarmStr.length() > 8 || alarmStr.length() < 7){
+            System.out.println("Invalid String Length");
+            hour = 12;
+            min = 0;
+            amPm = "AM";
+        }
+        else{
         String[] splitStr = alarmStr.split(":");
-        hour = Integer.parseInt(splitStr[0]);
+        if (checkForEmpty(splitStr[0])){
+            System.out.println("Invalid Hour");
+            hour = 12;
+        }
+        else{
+            hour = Integer.parseInt(splitStr[0]);
+        }
+        //hour = Integer.parseInt(splitStr[0]);
         String rightHalfOfAlarmStr = splitStr[1];
         String[] minAmPm = rightHalfOfAlarmStr.split(" ");
-        min = Integer.parseInt(minAmPm[0]);
-        amPm = minAmPm[1];
+        if (checkForEmpty(minAmPm[0])){
+            System.out.println("Invalid Minute");
+            min = 0;
+        }
+        else{
+            min = Integer.parseInt(minAmPm[0]);
+        }
+        
+        if (checkForEmpty(minAmPm[1])){
+            System.out.println("Invalid AmPm");
+            amPm = "AM";
+        }
+        else{
+            amPm = minAmPm[1];
+        }
+        
+        //min = Integer.parseInt(minAmPm[0]);
+        //amPm = minAmPm[1];
         System.out.println(hour);
         System.out.println(min);
         System.out.println(amPm);
+        }
+    }
+    
+    public boolean checkForEmpty(String string){
+        if (string.equals("") || string.equals(" ") || string.equals("  ")){
+            return true;
+        }
+        else{
+            return false;
+        }
     }
 
     public int[] getAlarmTimes(){

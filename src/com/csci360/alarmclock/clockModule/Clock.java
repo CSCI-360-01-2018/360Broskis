@@ -139,43 +139,6 @@ public class Clock{
         clock.cancel();
     }
     
-    /**
-    public void setHour(int hr){
-        if(hour == 13 ) {
-           hour = 1;
-        }
-        if (hour == 12 && minute == 0 ) {
-            if (amPm.equals("AM")){
-            amPm = "PM";
-            }
-            else if (amPm.equals("PM")) {
-            amPm = "AM";
-            }
-        }
-        
-        else if(hr == 0){
-            if (amPm.equals("AM")){
-                amPm = "PM";
-            }
-            else{
-                amPm = "AM";
-            }
-            hr = 12;
-        }
-        hour = hr;
-    }
-    
-    public void setMinute(int min){
-        if (min == 60){
-            min = 0;
-        }
-        else if(min < 0){
-            min = 59;
-        }
-        minute = min;
-    }
-    */
-    
     public void alignTime(){
         if(hour > 12){
             hour %= 12;
