@@ -60,17 +60,22 @@ public class Alarm {
         return (this.hour == clock.getHour() && this.minute == clock.getMinute());
     }
     public void setTone(Media file) {
-        tone = file;
+        m = file;
     }
 
     public Media getTone() {
-        return tone;
+        return m;
+    }
+    
+    public boolean getActive() {
+        return active;
     }
 
     public void startAlarm() {
         System.out.println("Ring is Called");
         if(active) {
         //System.out.println("Wake up");
+            player = new MediaPlayer(m);
             player.play(); 
         }
     }

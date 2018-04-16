@@ -54,6 +54,7 @@ public class AlarmClockUIController implements Initializable {
     @FXML private TextField alarm2SetTime;
     @FXML private TextField alarm1Time;
     @FXML private TextField alarm2Time;
+    @FXML private TextField alarmSetTone;
     
     @FXML private Button setAlarm1Button;
     @FXML private Button setAlarm2Button;
@@ -126,6 +127,9 @@ public class AlarmClockUIController implements Initializable {
         //alarm1.activateAlarm(alarm1ActCheck.isSelected());
         //alarm1.activateAlarm(true);
         clk.activateAlarm(1,alarm1ActCheck.isSelected());
+        if(clk.getAlarm(1).getActive()) {
+            clk.getAlarm(1).stopAlarm();
+        }
         System.out.println(clk.checkAlarmInfo(1));
     }
     
@@ -133,10 +137,22 @@ public class AlarmClockUIController implements Initializable {
     public void alarm2Active(ActionEvent e){
         //alarm2.activateAlarm(alarm2ActCheck.isSelected());
         clk.activateAlarm(2,alarm2ActCheck.isSelected());
-        
-        
+        if(clk.getAlarm(2).getActive()) {
+            clk.getAlarm(2).stopAlarm();
+        }
         //clk.
         //System.out.println(clk.checkAlarmInfo(2));
+    }
+    @FXML
+    public void setAlarmTone(ActionEvent e) {
+            //File file=new File("alarmSound.mp3");
+    //Media m = new Media(file.toURI().toString());
+            //
+        String tone = alarmSetTone.getText();
+        File file = new File(tone);
+        Media m = new Media(file.toURI().toString());
+        clk.getAlarm(1).setTone(m);
+        clk.getAlarm(2).setTone(m);
     }
     
     @FXML
