@@ -15,15 +15,18 @@ import java.util.Map;
  */
 public class Radio {
     private Station station = new Station();
-    //private Volume volume = new Volume();
     private boolean active;
     private Map<Double,Station> stations;
 
+    /*
+    When radio is created, instantiate stations and add to hashmap to avoid duplicates.
+    4 stations for purpose of showcasing radio functionality. 2 FM 2 AM
+    */
     public Radio() {
-        //stations = new HashMap();
+        
         stations = new HashMap<>();
         int amfreq = 750;
-        double dAmFreq = amfreq;
+        double dAmFreq;
         Station sta = new Station(102.7, "FM");
         sta.setMedia("ghostdivision.mp3");
         sta.setMediaPlayer();
@@ -46,31 +49,17 @@ public class Radio {
         stations.put(sta.getFrequency(), sta);
     }
     
+    // Set the 'active' state of the radio (on / off)
     public void setActive(boolean Active) {
         active = Active;
     }
     
+    // Get the 'active' state of the radio (on / off)
     public boolean getActive() {
         return active;
     }
-
-    public void setVolume(Station sta, Double vol) {
-        sta.setVolume(vol);
-    }
     
-    public double getVolume(Station sta) {
-        return sta.getVolume();
-    }
-    
-    /*
-    public void setStation(Station station) {
-        this.station.setStation(station.getFrequency());
-    }
-    
-    public double getStation() {
-        return station.getFrequency();
-    }
-    */
+    // Find the specified station by FREQUENCY in the hash map containing stations.
     public Station findStation(double key) {
         return stations.get(key);
     }
