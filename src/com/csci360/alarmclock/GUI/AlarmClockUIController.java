@@ -177,6 +177,15 @@ public class AlarmClockUIController implements Initializable {
         Media m = new Media(file.toURI().toString());
         clk.getAlarm(1).setTone(m);
         clk.getAlarm(2).setTone(m);
+        if(clk.getAlarm(1).getTestPlaying()) {
+            clk.getAlarm(1).getMediaPlayer().stop();
+            clk.getAlarm(1).setTestPlaying(false);
+        }
+        if(clk.getAlarm(2).getTestPlaying()) {
+            clk.getAlarm(2).getMediaPlayer().stop();
+            clk.getAlarm(2).setTestPlaying(false);
+        }
+        
     }
     
     @FXML
@@ -224,10 +233,18 @@ public class AlarmClockUIController implements Initializable {
     
     @FXML
     public void alarmTest1(){
+        if(clk.getAlarm(1).getTestPlaying()) {
+            clk.getAlarm(1).getMediaPlayer().stop();
+            clk.getAlarm(1).setTestPlaying(false);
+        }
         clk.getAlarm(1).testAlarm();
     }
     @FXML
     public void alarmTest2(){
+        if(clk.getAlarm(2).getTestPlaying()) {
+            clk.getAlarm(2).getMediaPlayer().stop();
+            clk.getAlarm(2).setTestPlaying(false);
+        }
         clk.getAlarm(2).testAlarm();
     }
     
@@ -246,8 +263,12 @@ public class AlarmClockUIController implements Initializable {
     public void setRadioVol(ActionEvent e) {
         //Station sta = radio.findStation( Double.parseDouble(rFreqText.getText()) );
         //System.out.println("In radio vol set");
-        radio.findStation( Double.parseDouble(rFreqText.getText()) ).getMediaPlayer().setVolume( Double.parseDouble(rVolText.getText()) * .01);
+        Double vol = Double.parseDouble(rVolText.getText()) * .01;
+        if(!rFreqText.getText().equals(""))
+            radio.findStation( Double.parseDouble(rFreqText.getText()) ).getMediaPlayer().setVolume( vol );
         rVolSlider.setValue( Double.parseDouble(rVolText.getText()) );
+        clk.getAlarm(1).setVolume(vol);
+        clk.getAlarm(2).setVolume(vol);
         //radio.findStation( Double.parseDouble(rFreqText.getText()) ).setMediaVol( Double.parseDouble(rVolText.getText()));
     }
     

@@ -24,10 +24,10 @@ public class Alarm {
     private boolean active;
     private Media tone;
     private String info;
+    private boolean testPlaying;
     File file=new File("alarmSound.mp3");
     Media m = new Media(file.toURI().toString());
     MediaPlayer player = new MediaPlayer(m);
-    
     
 
     public void setAlarmTime(int hr, int min, String amPm) {
@@ -83,8 +83,27 @@ public class Alarm {
         return active;
     }
     public void testAlarm(){
-         player = new MediaPlayer(m);
-         player.play(); 
+        if(!testPlaying) {
+            player = new MediaPlayer(m);
+            player.play(); 
+        }
+        testPlaying = true;
+    }
+    
+    public MediaPlayer getMediaPlayer() {
+        return player;
+    }
+    
+    public void setVolume(Double vol) {
+        player.setVolume(vol);
+    }
+    
+    public boolean getTestPlaying() {
+        return testPlaying;
+    }
+    
+    public void setTestPlaying(boolean test) {
+        testPlaying = test;
     }
 
     public void startAlarm() {
