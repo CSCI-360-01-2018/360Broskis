@@ -24,6 +24,9 @@ public class Alarm {
     private boolean active;
     private Media tone;
     private String info;
+    File file=new File("alarmSound.mp3");
+    Media m = new Media(file.toURI().toString());
+    MediaPlayer player = new MediaPlayer(m);
     
     
 
@@ -64,18 +67,33 @@ public class Alarm {
         return tone;
     }
 
-    public String ring() {
+    public void startAlarm() {
         System.out.println("Ring is Called");
         if(active) {
         //System.out.println("Wake up");
-            File file=new File("alarmSound.mp3");
-            Media m = new Media(file.toURI().toString());
-            MediaPlayer player = new MediaPlayer(m);
-            player.play();
-            toneTest = "Wake up";
-            return toneTest;
+            player.play(); 
         }
-        return toneTest;
+    }
+    
+    public void stopAlarm(){
+        player.stop();
+    }
+    
+    public void snoozeAlarm(){
+        minute += 5;
+         if (minute > 60){
+            minute = minute - 60;
+            hour++;
+        }
+         if(hour == 13){
+            if (amPm.equals("AM")){
+                amPm = "PM";
+            }
+            else{
+                amPm = "AM";
+            }
+            hour = 1;
+        }
     }
     
     public void alignTime() {

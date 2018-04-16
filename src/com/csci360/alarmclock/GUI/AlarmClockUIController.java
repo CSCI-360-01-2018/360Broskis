@@ -94,24 +94,20 @@ public class AlarmClockUIController implements Initializable {
     
     @FXML
     public void setHourUp(ActionEvent e){
-        clk.setHour(clk.getHour()+1);
-        clk.alignTime();
-        //clockField.setText(clk.getTime());
+        clk.incrementHour();
         clockTextArea.setText(clk.getTime());
     }
     
     @FXML
     public void setHourDown(ActionEvent e){
-        clk.setHour(clk.getHour()-1);
-        clk.alignTime();
-        //clockField.setText(clk.getTime());
+        clk.decrementHour();
         clockTextArea.setText(clk.getTime());
     }
     
     @FXML
     public void setMinuteUp(ActionEvent e){
        
-        clk.setMinute(clk.getMinute()+1);
+        clk.incrementMinute();
         
         //clockField.setText(clk.getTime());
         clockTextArea.setText(clk.getTime());
@@ -119,7 +115,8 @@ public class AlarmClockUIController implements Initializable {
     
     @FXML
     public void setMinuteDown(ActionEvent e){
-        clk.setMinute(clk.getMinute()-1);
+        //clk.setMinute(clk.getMinute()-1);
+        clk.decrementMinute();
         //clockField.setText(clk.getTime());
         clockTextArea.setText(clk.getTime());
     }
@@ -188,7 +185,7 @@ public class AlarmClockUIController implements Initializable {
     @FXML
     public void alarmTest(){
         testAlarm.activateAlarm(true);
-        testAlarm.ring();
+        testAlarm.startAlarm();
     }
     
     @FXML
@@ -235,6 +232,16 @@ public class AlarmClockUIController implements Initializable {
         //radio.setStation(new Station(Integer.parseInt(rFreqText.getText())));
         //System.out.println(radio.getStation());
     }
+    @FXML
+    public void snoozeAlarm1(ActionEvent e){
+        clk.snoozeAlarm(1);
+        alarm1Time.setText(clk.checkAlarmInfo(1));
+    }
+    @FXML
+    public void snoozeAlarm2(ActionEvent e){
+        clk.snoozeAlarm(2);
+        alarm2Time.setText(clk.checkAlarmInfo(2));
+    }
 
 
 class ParseAlarmTime {
@@ -260,7 +267,7 @@ class ParseAlarmTime {
         return amPm;
     }
 }
-
+/**
 class Sound {
     // temp. classes and functions to use Media and MediaLibrary imports
     
@@ -270,4 +277,5 @@ class Sound {
     MediaPlayer mediaPlayer = new MediaPlayer(hit);
     // mediaPlayer.play();
 }
+*/
 }

@@ -100,7 +100,7 @@ public class AlarmTest {
                 equalTime = true;
             }
             if(equalTime){
-                ringString = instance.ring();
+                //ringString = instance.ring();
             }
             if(ringString.equals("Wake up")){
                 System.out.println("Alarm rung");
@@ -121,7 +121,7 @@ public class AlarmTest {
         System.out.println("Test the ringer");
         Alarm instance = new Alarm();
         System.out.println("Hopefully the alarm will sound");
-        instance.ring();
+        //instance.ring();
         System.out.println("method has been run for ring");
         
     }

@@ -32,26 +32,14 @@ public class Clock{
         alarm2 = new Alarm();
         alarm2.setAlarmTime(12, 0, "AM");
         clock = new Timer();
+        
+        
         clock.scheduleAtFixedRate(new TimerTask() {
            @Override
            public void run()
            {
                 minute++;
-                if (minute == 60) {
-                    minute = 0;
-                    hour++;
-                }
-                if(hour == 13 ) {
-                    hour = 1;
-                }
-                if (hour == 12 && minute == 0 ) {
-                    if (amPm.equals("AM")){
-                        amPm = "PM";
-                    }
-                    else if (amPm.equals("PM")) {
-                        amPm = "AM";
-                    }
-                }
+                checkClockLogic();
                 checkAlarm();
             }
         }, 10000, 10000);
@@ -72,14 +60,6 @@ public class Clock{
             result = String.format("%d:%d %s",hour,minute,amPm);
         //String result = String.format("%d:%d %s",hour,minute,amPm);
         return result;
-    }
-
-    public int getHour() {
-        return hour;
-    }
-
-    public int getMinute() {
-        return minute;
     }
 
     public void setAlarm(int hour, int min, String amPm, int alarm) {
@@ -106,22 +86,31 @@ public class Clock{
         if(minute < 10){
             if(alarm1.getAlarmInfo().equals(String.format("%d:0%d %s",hour,minute,amPm))) {
                 //System.out.println("Alarm1 goes off...");
-                alarm1.ring();
+                alarm1.startAlarm();
             }
             else if(alarm2.getAlarmInfo().equals(String.format("%d:0%d %s",hour,minute,amPm))) {
                 //System.out.println("Alarm2 goes off...");
-                alarm2.ring();
+                alarm2.startAlarm();
             }
         }
         else{
             if(alarm1.getAlarmInfo().equals(String.format("%d:%d %s",hour,minute,amPm))) {
                 //System.out.println("Alarm1 goes off...");
-                alarm1.ring();
+                alarm1.startAlarm();
             }
             else if(alarm2.getAlarmInfo().equals(String.format("%d:%d %s",hour,minute,amPm))) {
                 //System.out.println("Alarm2 goes off...");
-                alarm2.ring();
+                alarm2.startAlarm();
             }
+        }
+    }
+    
+    public void snoozeAlarm(int alarm){
+        if (alarm == 1){
+            alarm1.snoozeAlarm();
+        }
+        else if(alarm == 2){
+            alarm2.snoozeAlarm();
         }
     }
 
@@ -139,15 +128,18 @@ public class Clock{
     }
     
     public void setHour(int hr){
-        if(hr == 13){
-            if (amPm.equals("AM")){
-                amPm = "PM";
-            }
-            else{
-                amPm = "AM";
-            }
-            hr = 1;
+        if(hour == 13 ) {
+           hour = 1;
         }
+        if (hour == 12 && minute == 0 ) {
+            if (amPm.equals("AM")){
+            amPm = "PM";
+            }
+            else if (amPm.equals("PM")) {
+            amPm = "AM";
+            }
+        }
+        
         else if(hr == 0){
             if (amPm.equals("AM")){
                 amPm = "PM";
@@ -173,15 +165,16 @@ public class Clock{
     public void alignTime(){
         if(hour > 12){
             hour %= 12;
-            switchAMPM(amPm);
+            //switchAmPm(amPm);
         }
     }
     
-    private void switchAMPM(String amPM){
-        if(amPM.equals("AM")){
+    
+    private void switchAmPm(){
+        if(amPm.equals("AM")){
             amPm = "PM";
         }
-        else if(amPM.equals("PM")){
+        else if(amPm.equals("PM")){
             amPm = "AM";
         }
     }
@@ -195,5 +188,56 @@ public class Clock{
         }
         return null;
     }
+    
+    public void checkClockLogic(){
+        if (minute == 60) {
+            minute = 0;
+            hour++;
+        }
+        if(hour == 13 ) {
+            hour = 1;
+        }
+        if (hour == 12 && minute == 0 ) {
+            switchAmPm();
+        }
+    }
+    
+    public void incrementHour(){
+        hour++;
+        if(hour == 13){
+            hour = 1;
+        }
+        if (hour == 12){
+            switchAmPm();
+        }
+    }
+    public void decrementHour(){
+        hour--;
+        if(hour == 0){
+            hour = 11;
+            switchAmPm();
+        }
+    }
+    public void incrementMinute(){
+        minute++;
+        if(minute == 60)
+            minute = 0;
+    }
+    public void decrementMinute(){
+        minute--;
+        if(minute < 0){
+            minute = 59;
+        }
+    }
+        
+    
+    public int getHour() {
+        return hour;
+    }
+
+    public int getMinute() {
+        return minute;
+    }
+    
     
 }
