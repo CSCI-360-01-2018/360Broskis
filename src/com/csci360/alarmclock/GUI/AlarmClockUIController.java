@@ -267,8 +267,10 @@ public class AlarmClockUIController implements Initializable {
         if(!rFreqText.getText().equals(""))
             radio.findStation( Double.parseDouble(rFreqText.getText()) ).getMediaPlayer().setVolume( vol );
         rVolSlider.setValue( Double.parseDouble(rVolText.getText()) );
-        clk.getAlarm(1).setVolume(vol);
-        clk.getAlarm(2).setVolume(vol);
+        if(alarm1ActCheck.isSelected() == true)
+            clk.getAlarm(1).setVolume(vol);
+        if(alarm2ActCheck.isSelected() == true)
+            clk.getAlarm(2).setVolume(vol);
         //radio.findStation( Double.parseDouble(rFreqText.getText()) ).setMediaVol( Double.parseDouble(rVolText.getText()));
     }
     
@@ -291,12 +293,15 @@ public class AlarmClockUIController implements Initializable {
                     //radio.findStation(d).clearStation();
                 radio.findStation(d).playStation();
                 prevStation = d;
-            }
-        }
-        //radio.g
-        //radio.setStation(new Station(Integer.parseInt(rFreqText.getText())));
-        //System.out.println(radio.getStation());
+                
+            }    
+            Double vol = radio.findStation(prevStation).getMediaPlayer().getVolume() * 100;
+            int ivol = vol.intValue();
+            rVolText.setText( Integer.toString(ivol) );
+            rVolSlider.setValue(vol * 100);
+        }    
     }
+    
     @FXML
     public void snoozeAlarm1(ActionEvent e){
         clk.snoozeAlarm(1);

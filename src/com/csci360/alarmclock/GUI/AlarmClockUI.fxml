@@ -121,13 +121,13 @@
                               <Font size="18.0" />
                            </font>
                         </CheckBox>
-                        <ChoiceBox fx:id="radioStationChoice" layoutX="237.0" layoutY="96.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="45.0" prefWidth="115.0" />
-                        <Text layoutX="237.0" layoutY="84.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Radio Stations" wrappingWidth="123.13671875">
+                        <ChoiceBox fx:id="radioStationChoice" layoutX="237.0" layoutY="92.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="45.0" prefWidth="115.0" />
+                        <Text layoutX="237.0" layoutY="86.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Radio Stations" wrappingWidth="173.13671875">
                            <font>
-                              <Font size="18.0" />
+                              <Font size="22.0" />
                            </font>
                         </Text>
-                        <Button fx:id="setRadioStationButton" layoutX="237.0" layoutY="157.0" mnemonicParsing="false" onAction="#setRadioFreq" prefHeight="45.0" prefWidth="115.0" text="Set Radio Station" />
+                        <Button fx:id="setRadioStationButton" layoutX="237.0" layoutY="141.0" mnemonicParsing="false" onAction="#setRadioFreq" prefHeight="45.0" prefWidth="115.0" text="Set Radio Station" />
                      </children>
                   </AnchorPane>
               </content>
