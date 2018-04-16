@@ -138,13 +138,14 @@ public class Clock{
     public void terminateClock() {
         clock.cancel();
     }
-    
+    /**
     public void alignTime(){
         if(hour > 12){
             hour %= 12;
             //switchAmPm(amPm);
         }
     }
+    */
     
     private void switchAmPm(){
         if(amPm.equals("AM")){
@@ -154,7 +155,7 @@ public class Clock{
             amPm = "AM";
         }
     }
-    
+    //Returns the alarm object in order for the controller to call the Alarm's methods
     public Alarm getAlarm(int alarmNum){
         if(alarmNum == 1){
             return alarm1;
@@ -164,19 +165,29 @@ public class Clock{
         }
         return null;
     }
+    //Clock logic, as minute increments in the timer this sets min/hour to the appropiate values
+    //Originally this was in the timer itself, but it really desearves its own function
     
     public void checkClockLogic(){
+        
+        //if min reaches 60, reset to 0. Simulating a minute
         if (minute == 60) {
             minute = 0;
             hour++;
         }
+        //Once hour reaches 13, it is reset to 1. To simulate a clock going from 12:59 to 1:00
         if(hour == 13 ) {
             hour = 1;
         }
+        //As the clock increments, once it reaches 12:00 it switches the AM/PM
+        //Simulating the time switch from 11:59 AM to 12:00 PM
         if (hour == 12 && minute == 0 ) {
             switchAmPm();
         }
     }
+    
+    //There was some depricated methods for set hour. But to overcome some edge cases
+    //we gave each of the buttons in the UI their own methods. To prevent logic issues.
     public void incrementHour(){
         hour++;
         if(hour == 13){
@@ -207,9 +218,12 @@ public class Clock{
             minute = 59;
         }
     }
+    
+    //Returns Hour for testing purposes
     public int getHour() {
         return hour;
     }
+    //Returns Min for testing purposes
     public int getMinute() {
         return minute;
     }

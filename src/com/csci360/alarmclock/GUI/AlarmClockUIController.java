@@ -224,11 +224,6 @@ public class AlarmClockUIController implements Initializable {
         
         alarm2Time.setText(clk.checkAlarmInfo(2));
     }
-
-    private void updateTime(){
-        int min = clk.getMinute();
-        int hr = clk.getHour();
-    }
     
     @FXML
     public void setTextField(ActionEvent e) {
