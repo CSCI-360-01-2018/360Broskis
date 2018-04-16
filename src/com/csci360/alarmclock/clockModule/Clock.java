@@ -1,19 +1,17 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package com.csci360.alarmclock.clockModule;
-
-
 import java.util.Timer;
 import java.util.TimerTask;
 
 
-/**
- *
- * @author Austin
- */
+
+//The Clock class is what holds creates our timer we use to mimic the clock. It also holds two instances
+//our alarm class in order to simulate our clock having two seperate alarms. It also acts as our main interface with the controller.
+
+
+
+
+
 public class Clock{
     private int minute;
     private int hour;
@@ -22,7 +20,7 @@ public class Clock{
     private Alarm alarm2;
     Timer clock;
 
-
+    //Our constructor for clock class. It sets the time and alarms to default values to avoid errors.
     public Clock() {
         minute = 0;
         hour = 12;
@@ -33,7 +31,10 @@ public class Clock{
         alarm2.setAlarmTime(12, 0, "AM");
         clock = new Timer();
         
-        
+        //Our clock works by incrementing minute at a fixed rate. 
+        //It calls out "checkClockLogic();" to deal with the clock logic.
+        //ie incrementing hour  when minute hits 60.
+        //It also checks for the alarm everytime the minute is incremented
         clock.scheduleAtFixedRate(new TimerTask() {
            @Override
            public void run()
@@ -42,16 +43,19 @@ public class Clock{
                 checkClockLogic();
                 checkAlarm();
             }
+           //where we set the rate, for demonstration purposes its at every 10s
         }, 10000, 10000);
     }
-
+    //This is how we update our time. This is more for testing purposes, as our UI
+    //Only allows for incrementing values.
     public void updateTime(int hour, int minute, String amPm) {
         this.hour = hour;
         this.minute = minute;
         this.amPm = amPm;
 
     }
-
+    //Returns a string formatted as 12:00 AM with the current values. Its what we use to 
+    //display on the main screen.
     public String getTime() {
         String result;
         if(minute < 10)
@@ -61,7 +65,9 @@ public class Clock{
         //String result = String.format("%d:%d %s",hour,minute,amPm);
         return result;
     }
-
+    
+    //Clock has two Alarm Class objects. This methods allows us to set the alarm
+    //times and specify which alarm to set.
     public void setAlarm(int hour, int min, String amPm, int alarm) {
         if (alarm == 1) {
             alarm1.setAlarmTime(hour,min,amPm);
@@ -70,7 +76,7 @@ public class Clock{
             alarm2.setAlarmTime(hour,min,amPm);
         }
     }
-
+    //For the specificed alarm returns the hour,min,am or pm values. 
     public String checkAlarmInfo(int alarm) {
         if (alarm == 1) {
             return alarm1.getAlarmInfo();
@@ -82,7 +88,17 @@ public class Clock{
             return "Incorrect alarm index";
         }
     }
+    
+    /**
+     * This method is called in our main timer every time the minute is incremented.
+     * it checks if the alarm info matches the time info. 
+     * 
+     * The inner if else statements allows us to differentiate the two alarms
+     * The outer if/else statement deals with a formatting issue we ran into with a numbers less than 10.
+     * Ie 12:01 can't be tested for equality with just "%d:%d %s",hour,minute,amPm
+     */
     public void checkAlarm() {
+        //Check for equality between alarm and time less than 10
         if(minute < 10){
             if(alarm1.getAlarmInfo().equals(String.format("%d:0%d %s",hour,minute,amPm))) {
                 //System.out.println("Alarm1 goes off...");
@@ -93,6 +109,7 @@ public class Clock{
                 alarm2.startAlarm();
             }
         }
+        //Check for equality between alarm and time greater than 10
         else{
             if(alarm1.getAlarmInfo().equals(String.format("%d:%d %s",hour,minute,amPm))) {
                 //System.out.println("Alarm1 goes off...");
@@ -104,7 +121,7 @@ public class Clock{
             }
         }
     }
-    
+    //The this method calls "snoozeAlarm()" for either alarm instance.
     public void snoozeAlarm(int alarm){
         if (alarm == 1){
             alarm1.snoozeAlarm();
@@ -113,7 +130,7 @@ public class Clock{
             alarm2.snoozeAlarm();
         }
     }
-
+    //Activates the alarm for either instance using the "activateAlarm(int alarm)" method in the Alarm Class
     public void activateAlarm(int alarm, boolean active){
         if (alarm == 1) {
             alarm1.activateAlarm(active);
@@ -122,11 +139,10 @@ public class Clock{
             alarm2.activateAlarm(active);
         }
     }
-    
+    //Terminates the clock thread
     public void terminateClock() {
         clock.cancel();
     }
-    
     public void setHour(int hr){
         if(hour == 13 ) {
            hour = 1;
