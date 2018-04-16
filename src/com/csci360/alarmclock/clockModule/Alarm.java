@@ -73,46 +73,57 @@ public class Alarm {
         return minute;
     }
     
-    //
+    //compares the time with the clock object given
      public boolean compareTime(Clock clock) {
         return (this.hour == clock.getHour() && this.minute == clock.getMinute());
     }
+     //Sets tone from a list of media files given by the UI
+     //Meaning the UI calls this method to set the tone
     public void setTone(Media file) {
         m = file;
     }
-
+    //Returns the current tone set
     public Media getTone() {
         return m;
     }
     
+    //Returns if the alarm is active or not
     public boolean getActive() {
         return active;
     }
+    
+    //Test alarm, plays the current tone that is set. Used primarily for the
+    //Testing button in the UI. 
+    
     public void testAlarm() {
-        
+        //If 
         if(!testPlaying) {
             player = new MediaPlayer(m);
             player.play(); 
         }
         testPlaying = true;
     }
-    
+    //returns the current media player. Everytime a new tone is set a new player is intialized.
+    //This could be changed to setting just the tone. But this way is more concrete.
     public MediaPlayer getMediaPlayer() {
         return player;
     }
-    
+    //sets the volume of the player that plays the alarm tone
     public void setVolume(Double vol) {
         player.setVolume(vol);
     }
-    
+    //Returns true or false if the testPlayer (allows the user to test the alarm)
+    //is currently playing
     public boolean getTestPlaying() {
         return testPlaying;
     }
-    
+    //sets play testing. All of the testPlayer methods and variables were added
+    //Late in development. We need to change this and coding is never done.
     public void setTestPlaying(boolean test) {
         testPlaying = test;
     }
-
+    //Start alarm starts playing the current set tone. It inits a new player
+    //every time it does it to prevent other players from interferring. 
     public void startAlarm() {
         //System.out.println("Ring is Called");
         if(active) {
@@ -121,14 +132,21 @@ public class Alarm {
             player.play(); 
         }
     }
-    
+    //stops the current player
     public void stopAlarm() {
         player.stop();
     }
-    
+     //Snooze alarm stops the current player and sets the alarm to 5 min in the future. 
+    // It has some built in invalid handling because the other methods only deal with incrementing.
+    // Should really put all this clock logic into one method, less likely to have bugs that way. 
     public void snoozeAlarm() {
+        
+        //Stop current tone
         stopAlarm();
+        
+        //Increment min
         minute += 5;
+        //Invalid min/hour handling + clock logic
          if (minute >= 60) {
             minute = minute - 60;
             hour++;
@@ -141,13 +159,6 @@ public class Alarm {
                 amPm = "AM";
             }
             hour = 1;
-        }
-    }
-    
-    public void alignTime() {
-        if(hour > 12){
-            hour %= 12;
-            //switchAMPM(amPm);
         }
     }
 }

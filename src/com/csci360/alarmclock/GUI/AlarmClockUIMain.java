@@ -35,16 +35,12 @@ primaryStage.setOnCloseRequest(e -> System.exit(0));
 
 public void mainWindow(Stage primaryStage) {
     try {
-        //AnchorPane load = (AnchorPane) FXMLLoader.load(AlarmClockUIMain.class.getResource("AlarmClockUI.fxml"));
         FXMLLoader loader =new FXMLLoader(AlarmClockUIMain.class.getResource("AlarmClockUI.fxml"));
         AnchorPane pane = loader.load();
-        //MainWindowController mainWindowController = loader.getController();
-        //mainWindowController.setMain(this);
         Scene scene = new Scene(pane);
         primaryStage.setScene(scene);
         primaryStage.show();
     } catch (IOException e) {
-        // TODO Auto-generated catch block
         e.printStackTrace();
     }
 }
