@@ -31,6 +31,18 @@ public class Alarm {
     
 
     public void setAlarmTime(int hr, int min, String amPm) {
+        if(hr >= 13){
+            System.out.println("Invalid Hour");
+            hr = 12;
+        }
+        if(min >= 60 || min < 0){
+            System.out.println("Invalid Minuite");
+            min = 0;
+        }
+        if(!(amPm.equals("AM") || amPm.equals("PM"))){
+            System.out.println("Invalid AM/PM");
+            amPm = "AM";
+        }
         hour = hr;
         minute = min;
         this.amPm = amPm;
