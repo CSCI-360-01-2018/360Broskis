@@ -50,7 +50,7 @@ public class Radio {
         active = Active;
     }
     
-    public boolean getActive(){
+    public boolean getActive() {
         return active;
     }
 
@@ -70,7 +70,7 @@ public class Radio {
         return station.getFrequency();
     }
     
-    public Station findStation(double key){
+    public Station findStation(double key) {
         return stations.get(key);
     }
 }

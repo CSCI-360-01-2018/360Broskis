@@ -35,11 +35,13 @@ public class Alarm {
             System.out.println("Invalid Hour");
             hr = 12;
         }
+        
         if(min >= 60 || min < 0){
             System.out.println("Invalid Minuite");
             min = 0;
         }
-        if(!(amPm.equals("AM") || amPm.equals("PM"))){
+        
+        if(!(amPm.equals("AM") || amPm.equals("PM"))) {
             System.out.println("Invalid AM/PM");
             amPm = "AM";
         }
@@ -82,7 +84,7 @@ public class Alarm {
     public boolean getActive() {
         return active;
     }
-    public void testAlarm(){
+    public void testAlarm() {
         if(!testPlaying) {
             player = new MediaPlayer(m);
             player.play(); 
@@ -115,22 +117,22 @@ public class Alarm {
         }
     }
     
-    public void stopAlarm(){
+    public void stopAlarm() {
         player.stop();
     }
     
-    public void snoozeAlarm(){
+    public void snoozeAlarm() {
         stopAlarm();
         minute += 5;
-         if (minute >= 60){
+         if (minute >= 60) {
             minute = minute - 60;
             hour++;
         }
-         if(hour == 13){
-            if (amPm.equals("AM")){
+         if(hour == 13) {
+            if (amPm.equals("AM")) {
                 amPm = "PM";
             }
-            else{
+            else {
                 amPm = "AM";
             }
             hour = 1;
@@ -143,6 +145,7 @@ public class Alarm {
             //switchAMPM(amPm);
         }
     }
+    
     private void switchAMPM(String amPM) {
         if(amPM.equals("AM")) {
             amPm = "PM";
@@ -151,5 +154,4 @@ public class Alarm {
             amPm = "AM";
         }
     }
-
 }

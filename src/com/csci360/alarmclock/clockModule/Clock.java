@@ -185,7 +185,6 @@ public class Clock{
         }
     }
     
-    
     private void switchAmPm(){
         if(amPm.equals("AM")){
             amPm = "PM";
@@ -217,7 +216,6 @@ public class Clock{
             switchAmPm();
         }
     }
-    
     public void incrementHour(){
         hour++;
         if(hour == 13){
@@ -248,15 +246,10 @@ public class Clock{
             minute = 59;
         }
     }
-        
-    
     public int getHour() {
         return hour;
     }
-
     public int getMinute() {
         return minute;
     }
-    
-    
 }

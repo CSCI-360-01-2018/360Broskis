@@ -59,10 +59,8 @@ public class AlarmClockUIController implements Initializable {
     @FXML private ChoiceBox alarmSetTone;
     //@FXML private ChoiceBox alarmSetTone1;
     @FXML private Button setAlarmButton;
-    
     @FXML private Button setAlarm1Button;
     @FXML private Button setAlarm2Button;
-    //
     @FXML private TextField rVolText;
     @FXML private TextField rFreqText;
     @FXML private Slider rVolSlider;
@@ -90,14 +88,15 @@ public class AlarmClockUIController implements Initializable {
         alarmToneList.add("messengerofgod.mp3");
         alarmSetTone.setItems(alarmToneList);       
         alarmSetTone.setValue("alarmSound.mp3");
-        //
+        
         radioStationList.add("102.7");
         radioStationList.add("103.5");
         radioStationList.add("750");
         radioStationList.add("1030");
         radioStationChoice.setItems(radioStationList);
         
-    }    
+    }
+    
    @FXML
     public void checkTime(ActionEvent e){
         clk = new Clock();
@@ -185,7 +184,6 @@ public class AlarmClockUIController implements Initializable {
             clk.getAlarm(2).getMediaPlayer().stop();
             clk.getAlarm(2).setTestPlaying(false);
         }
-        
     }
     
     @FXML
@@ -223,7 +221,7 @@ public class AlarmClockUIController implements Initializable {
     }
     
     @FXML
-    public void setTextField(ActionEvent e){
+    public void setTextField(ActionEvent e) {
         //clk.setAlarm(8, 10, "AM", 1);
         //alarm1.setAlarmTime(8, 10, "AM");
         textF.setText("Butts");
@@ -239,6 +237,7 @@ public class AlarmClockUIController implements Initializable {
         }
         clk.getAlarm(1).testAlarm();
     }
+    
     @FXML
     public void alarmTest2(){
         if(clk.getAlarm(2).getTestPlaying()) {
@@ -257,7 +256,6 @@ public class AlarmClockUIController implements Initializable {
             radio.findStation(d).clearStation();
         }
     }
-   
     
     @FXML
     public void setRadioVol(ActionEvent e) {
@@ -277,9 +275,11 @@ public class AlarmClockUIController implements Initializable {
     @FXML
     public void setRadioFreq(ActionEvent e) {
         rFreqText.setText(radioStationChoice.getValue().toString());
+        
         if(radio.findStation(prevStation) != null) {
             radio.findStation(prevStation).getMediaPlayer().stop();
         }
+        
         if(radio.getActive()) {
             //radio.setStation(new Station(Double.parseDouble(rFreqText.getText())), "");
             double d = Double.parseDouble((rFreqText.getText()));
@@ -293,13 +293,14 @@ public class AlarmClockUIController implements Initializable {
                     //radio.findStation(d).clearStation();
                 radio.findStation(d).playStation();
                 prevStation = d;
-                
-            }    
+            }
+            
             Double vol = radio.findStation(prevStation).getMediaPlayer().getVolume() * 100;
             int ivol = vol.intValue();
             rVolText.setText( Integer.toString(ivol) );
             rVolSlider.setValue(vol * 100);
-        }    
+            
+        }
     }
     
     @FXML
@@ -312,7 +313,6 @@ public class AlarmClockUIController implements Initializable {
         clk.snoozeAlarm(2);
         alarm2Time.setText(clk.checkAlarmInfo(2));
     }
-
 
 class ParseAlarmTime {
     int hour,min;

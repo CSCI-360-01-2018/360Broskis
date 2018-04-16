@@ -22,8 +22,14 @@ public class Station {
     File file;//=new File(mediaFile);
     Media m;// = new Media(file.toURI().toString());
     MediaPlayer player;// = new MediaPlayer(m);
-    public Station(){
+    
+    public Station() {
         
+    }
+    
+    // Status function for debugging purposes
+    public MediaPlayer.Status Status() {
+        return player.getStatus();
     }
     
     public Station(double frequency, String amfm) {
@@ -36,11 +42,11 @@ public class Station {
         freq = frequency;
     }
     
-    public void setAmFm(String amfm){
+    public void setAmFm(String amfm) {
         amFm = amfm;
     }
     
-    public void setMedia(String file){
+    public void setMedia(String file) {
         mediaFile = file;
     }
     
@@ -77,7 +83,7 @@ public class Station {
         return player;
     }
     
-    public void playStation(){
+    public void playStation() {
         //file=new File(mediaFile);
         //m = new Media(file.toURI().toString());
         
