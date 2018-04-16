@@ -85,8 +85,9 @@ public class Alarm {
     }
     
     public void snoozeAlarm(){
+        stopAlarm();
         minute += 5;
-         if (minute > 60){
+         if (minute >= 60){
             minute = minute - 60;
             hour++;
         }
