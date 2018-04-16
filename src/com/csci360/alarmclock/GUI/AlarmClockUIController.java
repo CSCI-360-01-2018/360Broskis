@@ -25,6 +25,8 @@ import java.io.File;
 import java.text.NumberFormat;
 import java.util.Timer;
 import java.util.TimerTask;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Slider;
@@ -54,7 +56,9 @@ public class AlarmClockUIController implements Initializable {
     @FXML private TextField alarm2SetTime;
     @FXML private TextField alarm1Time;
     @FXML private TextField alarm2Time;
-    @FXML private TextField alarmSetTone;
+    @FXML private ChoiceBox alarmSetTone;
+    //@FXML private ChoiceBox alarmSetTone1;
+    @FXML private Button setAlarmButton;
     
     @FXML private Button setAlarm1Button;
     @FXML private Button setAlarm2Button;
@@ -67,6 +71,7 @@ public class AlarmClockUIController implements Initializable {
     
     private double prevStation;
     
+    private ObservableList<String> alarmToneList = FXCollections.observableArrayList();
     
     /**
      * Initializes the controller class.
@@ -75,6 +80,22 @@ public class AlarmClockUIController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         radio = new Radio();
+        alarmToneList.add("alarmSound.mp3");
+        alarmToneList.add("ghostdivision.mp3");
+        alarmToneList.add("saygoodbye.mp3");
+        alarmToneList.add("legionofmonsters.mp3");
+        alarmToneList.add("messengerofgod.mp3");
+        alarmSetTone.setItems(alarmToneList);
+        /*
+        alarmSetTone1.getItems().add("alarmSound.mp3");
+        alarmSetTone1.getItems().add("ghostdivision.mp3");
+        alarmSetTone1.getItems().add("saygoodbye.mp3");
+        alarmSetTone1.getItems().add("legionofmonsters.mp3");
+        alarmSetTone1.getItems().add("messengerofgod.mp3");
+        */
+        
+        alarmSetTone.setValue("alarmSound.mp3");
+        
     }    
    @FXML
     public void checkTime(ActionEvent e){
@@ -148,7 +169,11 @@ public class AlarmClockUIController implements Initializable {
             //File file=new File("alarmSound.mp3");
     //Media m = new Media(file.toURI().toString());
             //
-        String tone = alarmSetTone.getText();
+        //String tone = alarmSetTone.getText();
+        String tone = alarmSetTone.getValue().toString();
+        System.out.println("TONE: " + tone);
+        System.out.println("TONE2: " + alarmSetTone.getValue().toString());
+        
         File file = new File(tone);
         Media m = new Media(file.toURI().toString());
         clk.getAlarm(1).setTone(m);

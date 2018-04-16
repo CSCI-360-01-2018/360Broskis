@@ -2,6 +2,7 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Slider?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
@@ -11,7 +12,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.csci360.alarmclock.GUI.AlarmClockUIController">
+<AnchorPane id="AnchorPane" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.csci360.alarmclock.GUI.AlarmClockUIController">
    <children>
       <TabPane prefHeight="400.0" prefWidth="800.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <tabs>
@@ -81,17 +82,19 @@
                         <Button fx:id="snoozeAlarm1" layoutX="328.0" layoutY="115.0" mnemonicParsing="false" onAction="#snoozeAlarm1" prefHeight="54.0" prefWidth="120.0" text="Snooze" />
                         <Button fx:id="testAlarmButton11" layoutX="478.0" layoutY="292.0" mnemonicParsing="false" onAction="#alarmTest" prefHeight="54.0" prefWidth="120.0" text="Test Alarm 1" />
                         <Button fx:id="snoozeAlarm2" layoutX="332.0" layoutY="293.0" mnemonicParsing="false" onAction="#snoozeAlarm2" prefHeight="54.0" prefWidth="120.0" text="Snooze " />
-                        <TextField fx:id="alarmSetTone" layoutX="536.0" layoutY="15.0" onAction="#setAlarmTone" prefHeight="38.0" prefWidth="250.0" promptText="Set Alarm Tone (xxx.mp3)">
-                           <font>
-                              <Font size="17.0" />
-                           </font>
-                        </TextField>
                         <TextField fx:id="alarm2SetTime" layoutX="426.0" layoutY="250.0" prefHeight="34.0" prefWidth="171.0" promptText="12:00 AM">
                            <font>
                               <Font size="17.0" />
                            </font>
                         </TextField>
                         <Button fx:id="setAlarm2Button" layoutX="332.0" layoutY="250.0" mnemonicParsing="false" onAction="#setAlarm2Time" prefHeight="34.0" prefWidth="95.0" text="Set Alarm 1" />
+                        <ChoiceBox fx:id="alarmSetTone" layoutX="621.0" layoutY="78.0" prefWidth="150.0" />
+                        <Button fx:id="setAlarmButton" layoutX="651.0" layoutY="121.0" mnemonicParsing="false" onAction="#setAlarmTone" prefHeight="54.0" prefWidth="120.0" text="Set Alarm Tone" />
+                        <Text layoutX="671.0" layoutY="70.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Alarm Tones">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Text>
                      </children>
                   </AnchorPane>
             </content>
