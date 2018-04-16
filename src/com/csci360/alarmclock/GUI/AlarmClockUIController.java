@@ -172,8 +172,6 @@ public class AlarmClockUIController implements Initializable {
             //
         //String tone = alarmSetTone.getText();
         String tone = alarmSetTone.getValue().toString();
-        System.out.println("TONE: " + tone);
-        System.out.println("TONE2: " + alarmSetTone.getValue().toString());
         
         File file = new File(tone);
         Media m = new Media(file.toURI().toString());
@@ -245,8 +243,8 @@ public class AlarmClockUIController implements Initializable {
     public void setRadioVol(ActionEvent e) {
         //Station sta = radio.findStation( Double.parseDouble(rFreqText.getText()) );
         //System.out.println("In radio vol set");
-        
         radio.findStation( Double.parseDouble(rFreqText.getText()) ).getMediaPlayer().setVolume( Double.parseDouble(rVolText.getText()) * .01);
+        rVolSlider.setValue( Double.parseDouble(rVolText.getText()) );
         //radio.findStation( Double.parseDouble(rFreqText.getText()) ).setMediaVol( Double.parseDouble(rVolText.getText()));
     }
     

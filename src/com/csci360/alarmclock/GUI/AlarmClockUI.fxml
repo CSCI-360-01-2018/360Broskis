@@ -103,8 +103,8 @@
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <Slider fx:id="rVolSlider" layoutX="40.0" layoutY="215.0" onDragDone="#setRadioVol" orientation="VERTICAL" showTickLabels="true" />
-                        <Text layoutX="11.0" layoutY="179.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Volume" wrappingWidth="112.79296875">
+                        <Slider fx:id="rVolSlider" layoutX="29.0" layoutY="167.0" majorTickUnit="10.0" onDragDone="#setRadioVol" orientation="VERTICAL" prefHeight="188.0" prefWidth="36.0" showTickLabels="true" />
+                        <Text layoutX="11.0" layoutY="130.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Volume" wrappingWidth="112.79296875">
                            <font>
                               <Font size="22.0" />
                            </font>
@@ -114,7 +114,7 @@
                               <Font size="22.0" />
                            </font>
                         </Text>
-                        <TextField fx:id="rVolText" layoutX="11.0" layoutY="187.0" onAction="#setRadioVol" prefHeight="25.0" prefWidth="72.0" />
+                        <TextField fx:id="rVolText" layoutX="11.0" layoutY="133.0" onAction="#setRadioVol" prefHeight="25.0" prefWidth="72.0" />
                         <TextField fx:id="rFreqText" layoutX="213.0" layoutY="187.0" onAction="#setRadioFreq" prefHeight="25.0" prefWidth="72.0" />
                         <CheckBox fx:id="radioActiveCheck" layoutX="88.0" layoutY="14.0" mnemonicParsing="false" onAction="#setRadioActive" prefHeight="36.0" prefWidth="164.0" text="Radio Active">
                            <font>
