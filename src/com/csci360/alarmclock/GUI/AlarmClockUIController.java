@@ -223,9 +223,12 @@ public class AlarmClockUIController implements Initializable {
     }
     
     @FXML
-    public void alarmTest(){
-        testAlarm.activateAlarm(true);
-        testAlarm.startAlarm();
+    public void alarmTest1(){
+        clk.getAlarm(1).testAlarm();
+    }
+    @FXML
+    public void alarmTest2(){
+        clk.getAlarm(2).testAlarm();
     }
     
     @FXML
