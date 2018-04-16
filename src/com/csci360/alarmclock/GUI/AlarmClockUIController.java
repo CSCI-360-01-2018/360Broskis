@@ -58,16 +58,11 @@ public class AlarmClockUIController implements Initializable {
     @FXML private TextField alarm2Time;
     @FXML private ChoiceBox alarmSetTone;
     //@FXML private ChoiceBox alarmSetTone1;
-    @FXML private Button setAlarmButton;
-    @FXML private Button setAlarm1Button;
-    @FXML private Button setAlarm2Button;
     @FXML private TextField rVolText;
     @FXML private TextField rFreqText;
     @FXML private Slider rVolSlider;
-    @FXML private Slider rFreqSlider;
     @FXML private CheckBox radioActiveCheck;
     @FXML private ChoiceBox radioStationChoice;
-    @FXML private Button setRadioStationButton;
     
     private double prevStation;
     
@@ -95,6 +90,20 @@ public class AlarmClockUIController implements Initializable {
         radioStationList.add("1030");
         radioStationChoice.setItems(radioStationList);
         
+        clk = new Clock();
+        timer = new Timer();
+        //clockField.setText(clk.getTime());
+        clockTextArea.setText(clk.getTime());
+        System.out.println("Hi");
+        
+        timer.scheduleAtFixedRate(new TimerTask() {
+           @Override
+           public void run() {
+             //clockField.setText(clk.getTime()); 
+             clockTextArea.setText(clk.getTime());
+           }
+        }, 1000, 1000);
+        
     }
     
    @FXML
@@ -111,7 +120,7 @@ public class AlarmClockUIController implements Initializable {
              //clockField.setText(clk.getTime()); 
              clockTextArea.setText(clk.getTime());
            }
-        }, 10000, 10000);
+        }, 1000, 1000);
     }
     
     @FXML
@@ -195,7 +204,7 @@ public class AlarmClockUIController implements Initializable {
             int[] alarmTimes = alarmOneSettings.getAlarmTimes();
             String amPm = alarmOneSettings.getAlarmAmPm();
             clk.setAlarm(alarmTimes[0], alarmTimes[1], amPm, 1);
-            clk.getAlarm(1).alignTime();
+            //clk.getAlarm(1).alignTime();
         
             alarm1Time.setText(clk.checkAlarmInfo(1));
         }
@@ -208,9 +217,10 @@ public class AlarmClockUIController implements Initializable {
         ParseAlarmTime alarmTwoSettings = new ParseAlarmTime(setTime);
         int[] alarmTimes = alarmTwoSettings.getAlarmTimes();
         String amPm = alarmTwoSettings.getAlarmAmPm();
+        System.out.println(amPm);
         clk.setAlarm(alarmTimes[0], alarmTimes[1], amPm, 2);
         
-        clk.getAlarm(2).alignTime();
+        //clk.getAlarm(2).alignTime();
         
         alarm2Time.setText(clk.checkAlarmInfo(2));
     }
@@ -319,15 +329,56 @@ class ParseAlarmTime {
     int hour,min;
     String amPm;
     public ParseAlarmTime(String alarmStr) {
+        System.out.println(alarmStr.length());
+        if(alarmStr.length() > 8 || alarmStr.length() < 7){
+            System.out.println("Invalid String Length");
+            hour = 12;
+            min = 0;
+            amPm = "AM";
+        }
+        else{
         String[] splitStr = alarmStr.split(":");
-        hour = Integer.parseInt(splitStr[0]);
+        if (checkForEmpty(splitStr[0])){
+            System.out.println("Invalid Hour");
+            hour = 12;
+        }
+        else{
+            hour = Integer.parseInt(splitStr[0]);
+        }
+        //hour = Integer.parseInt(splitStr[0]);
         String rightHalfOfAlarmStr = splitStr[1];
         String[] minAmPm = rightHalfOfAlarmStr.split(" ");
-        min = Integer.parseInt(minAmPm[0]);
-        amPm = minAmPm[1];
+        if (checkForEmpty(minAmPm[0])){
+            System.out.println("Invalid Minute");
+            min = 0;
+        }
+        else{
+            min = Integer.parseInt(minAmPm[0]);
+        }
+        
+        if (checkForEmpty(minAmPm[1])){
+            System.out.println("Invalid AmPm");
+            amPm = "AM";
+        }
+        else{
+            amPm = minAmPm[1];
+        }
+        
+        //min = Integer.parseInt(minAmPm[0]);
+        //amPm = minAmPm[1];
         System.out.println(hour);
         System.out.println(min);
         System.out.println(amPm);
+        }
+    }
+    
+    public boolean checkForEmpty(String string){
+        if (string.equals("") || string.equals(" ") || string.equals("  ")){
+            return true;
+        }
+        else{
+            return false;
+        }
     }
 
     public int[] getAlarmTimes(){

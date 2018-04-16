@@ -7,11 +7,6 @@ import java.util.TimerTask;
 
 //The Clock class is what holds creates our timer we use to mimic the clock. It also holds two instances
 //our alarm class in order to simulate our clock having two seperate alarms. It also acts as our main interface with the controller.
-
-
-
-
-
 public class Clock{
     private int minute;
     private int hour;
@@ -44,7 +39,7 @@ public class Clock{
                 checkAlarm();
             }
            //where we set the rate, for demonstration purposes its at every 10s
-        }, 10000, 10000);
+        }, 1000, 1000);
     }
     //This is how we update our time. This is more for testing purposes, as our UI
     //Only allows for incrementing values.
@@ -142,40 +137,6 @@ public class Clock{
     //Terminates the clock thread
     public void terminateClock() {
         clock.cancel();
-    }
-    public void setHour(int hr){
-        if(hour == 13 ) {
-           hour = 1;
-        }
-        if (hour == 12 && minute == 0 ) {
-            if (amPm.equals("AM")){
-            amPm = "PM";
-            }
-            else if (amPm.equals("PM")) {
-            amPm = "AM";
-            }
-        }
-        
-        else if(hr == 0){
-            if (amPm.equals("AM")){
-                amPm = "PM";
-            }
-            else{
-                amPm = "AM";
-            }
-            hr = 12;
-        }
-        hour = hr;
-    }
-    
-    public void setMinute(int min){
-        if (min == 60){
-            min = 0;
-        }
-        else if(min < 0){
-            min = 59;
-        }
-        minute = min;
     }
     
     public void alignTime(){
