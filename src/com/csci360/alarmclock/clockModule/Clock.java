@@ -212,10 +212,13 @@ public class Clock{
         }
     }
     public void decrementHour(){
+        if (hour == 12){
+            switchAmPm();
+        }
         hour--;
         if(hour == 0){
-            hour = 11;
-            switchAmPm();
+            hour = 12;
+            //switchAmPm();
         }
     }
     public void incrementMinute(){
