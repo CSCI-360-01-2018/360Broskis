@@ -67,13 +67,11 @@
                               <Font size="22.0" />
                            </font>
                         </CheckBox>
-                        <TextField fx:id="alarm1SetTime" layoutX="420.0" layoutY="73.0" prefHeight="34.0" prefWidth="171.0" promptText="Set Alarm Time">
+                        <TextField fx:id="alarm1SetTime" layoutX="420.0" layoutY="73.0" prefHeight="34.0" prefWidth="171.0" promptText="12:00 AM">
                            <font>
                               <Font size="17.0" />
                            </font></TextField>
-                        <TextField fx:id="alarm2SetTime" layoutX="427.0" layoutY="259.0" promptText="Set Alarm Time" />
                         <Button fx:id="setAlarm1Button" layoutX="327.0" layoutY="73.0" mnemonicParsing="false" onAction="#setAlarm1Time" prefHeight="34.0" prefWidth="95.0" text="Set Alarm 1" />
-                        <Button fx:id="setAlarm2Button" layoutX="332.0" layoutY="259.0" mnemonicParsing="false" onAction="#setAlarm2Time" text="Set Alarm 2" />
                         <Button fx:id="testAlarmButton1" layoutX="470.0" layoutY="115.0" mnemonicParsing="false" onAction="#alarmTest" prefHeight="54.0" prefWidth="120.0" text="Test Alarm 1" />
                         <CheckBox fx:id="alarm2ActCheck" layoutX="25.0" layoutY="302.0" mnemonicParsing="false" onAction="#alarm2Active" prefHeight="31.0" prefWidth="286.0" text="Alarm 1 Active">
                            <font>
@@ -88,6 +86,12 @@
                               <Font size="17.0" />
                            </font>
                         </TextField>
+                        <TextField fx:id="alarm2SetTime" layoutX="426.0" layoutY="250.0" prefHeight="34.0" prefWidth="171.0" promptText="12:00 AM">
+                           <font>
+                              <Font size="17.0" />
+                           </font>
+                        </TextField>
+                        <Button fx:id="setAlarm2Button" layoutX="332.0" layoutY="250.0" mnemonicParsing="false" onAction="#setAlarm2Time" prefHeight="34.0" prefWidth="95.0" text="Set Alarm 1" />
                      </children>
                   </AnchorPane>
             </content>
