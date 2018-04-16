@@ -82,6 +82,10 @@ public class Alarm {
     public boolean getActive() {
         return active;
     }
+    public void testAlarm(){
+         player = new MediaPlayer(m);
+         player.play(); 
+    }
 
     public void startAlarm() {
         System.out.println("Ring is Called");
