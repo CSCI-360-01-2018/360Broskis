@@ -267,9 +267,9 @@ public class AlarmClockUIController implements Initializable {
         if(!rFreqText.getText().equals(""))
             radio.findStation( Double.parseDouble(rFreqText.getText()) ).getMediaPlayer().setVolume( vol );
         rVolSlider.setValue( Double.parseDouble(rVolText.getText()) );
-        if(alarm1ActCheck.isSelected() == true)
+        if(alarm1ActCheck.isSelected())
             clk.getAlarm(1).setVolume(vol);
-        if(alarm2ActCheck.isSelected() == true)
+        if(alarm2ActCheck.isSelected())
             clk.getAlarm(2).setVolume(vol);
         //radio.findStation( Double.parseDouble(rFreqText.getText()) ).setMediaVol( Double.parseDouble(rVolText.getText()));
     }
