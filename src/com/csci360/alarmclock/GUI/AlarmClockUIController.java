@@ -332,15 +332,5 @@ class ParseAlarmTime {
         return amPm;
     }
 }
-/**
-class Sound {
-    // temp. classes and functions to use Media and MediaLibrary imports
-    
-    String song = "";
 
-    Media hit = new Media(new File(song).toURI().toString());
-    MediaPlayer mediaPlayer = new MediaPlayer(hit);
-    // mediaPlayer.play();
-}
-*/
 }
