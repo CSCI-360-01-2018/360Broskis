@@ -11,7 +11,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.csci360.alarmclock.GUI.AlarmClockUIController">
+<AnchorPane id="AnchorPane" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.csci360.alarmclock.GUI.AlarmClockUIController">
    <children>
       <TabPane prefHeight="400.0" prefWidth="800.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <tabs>
@@ -72,7 +72,7 @@
                               <Font size="17.0" />
                            </font></TextField>
                         <TextField fx:id="alarm2SetTime" layoutX="427.0" layoutY="259.0" promptText="Set Alarm Time" />
-                        <Button fx:id="setAlarm1Button" layoutX="327.0" layoutY="73.0" mnemonicParsing="false" onAction="#snoozeAlarm1" prefHeight="34.0" prefWidth="95.0" text="Set Alarm 1" />
+                        <Button fx:id="setAlarm1Button" layoutX="327.0" layoutY="73.0" mnemonicParsing="false" onAction="#setAlarm1Time" prefHeight="34.0" prefWidth="95.0" text="Set Alarm 1" />
                         <Button fx:id="setAlarm2Button" layoutX="332.0" layoutY="259.0" mnemonicParsing="false" onAction="#setAlarm2Time" text="Set Alarm 2" />
                         <Button fx:id="testAlarmButton1" layoutX="470.0" layoutY="115.0" mnemonicParsing="false" onAction="#alarmTest" prefHeight="54.0" prefWidth="120.0" text="Test Alarm 1" />
                         <CheckBox fx:id="alarm2ActCheck" layoutX="25.0" layoutY="302.0" mnemonicParsing="false" onAction="#alarm2Active" prefHeight="31.0" prefWidth="286.0" text="Alarm 1 Active">
