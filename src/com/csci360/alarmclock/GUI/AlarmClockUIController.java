@@ -297,8 +297,9 @@ public class AlarmClockUIController implements Initializable {
             
             Double vol = radio.findStation(prevStation).getMediaPlayer().getVolume() * 100;
             int ivol = vol.intValue();
+            System.out.println(ivol);
             rVolText.setText( Integer.toString(ivol) );
-            rVolSlider.setValue(vol * 100);
+            rVolSlider.setValue(ivol);
             
         }
     }

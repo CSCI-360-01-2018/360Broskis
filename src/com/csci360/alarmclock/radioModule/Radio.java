@@ -61,7 +61,8 @@ public class Radio {
     public double getVolume(Station sta) {
         return sta.getVolume();
     }
-
+    
+    /*
     public void setStation(Station station) {
         this.station.setStation(station.getFrequency());
     }
@@ -69,7 +70,7 @@ public class Radio {
     public double getStation() {
         return station.getFrequency();
     }
-    
+    */
     public Station findStation(double key) {
         return stations.get(key);
     }
