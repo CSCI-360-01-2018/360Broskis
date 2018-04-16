@@ -58,16 +58,11 @@ public class AlarmClockUIController implements Initializable {
     @FXML private TextField alarm2Time;
     @FXML private ChoiceBox alarmSetTone;
     //@FXML private ChoiceBox alarmSetTone1;
-    @FXML private Button setAlarmButton;
-    @FXML private Button setAlarm1Button;
-    @FXML private Button setAlarm2Button;
     @FXML private TextField rVolText;
     @FXML private TextField rFreqText;
     @FXML private Slider rVolSlider;
-    @FXML private Slider rFreqSlider;
     @FXML private CheckBox radioActiveCheck;
     @FXML private ChoiceBox radioStationChoice;
-    @FXML private Button setRadioStationButton;
     
     private double prevStation;
     
@@ -95,6 +90,20 @@ public class AlarmClockUIController implements Initializable {
         radioStationList.add("1030");
         radioStationChoice.setItems(radioStationList);
         
+        clk = new Clock();
+        timer = new Timer();
+        //clockField.setText(clk.getTime());
+        clockTextArea.setText(clk.getTime());
+        System.out.println("Hi");
+        
+        timer.scheduleAtFixedRate(new TimerTask() {
+           @Override
+           public void run() {
+             //clockField.setText(clk.getTime()); 
+             clockTextArea.setText(clk.getTime());
+           }
+        }, 1000, 1000);
+        
     }
     
    @FXML
@@ -111,7 +120,7 @@ public class AlarmClockUIController implements Initializable {
              //clockField.setText(clk.getTime()); 
              clockTextArea.setText(clk.getTime());
            }
-        }, 10000, 10000);
+        }, 1000, 1000);
     }
     
     @FXML
