@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package com.csci360.alarmclock.GUI;
 
 import java.net.URL;
@@ -339,7 +335,9 @@ public class AlarmClockUIController implements Initializable {
             
         }
     }
-    
+    //The snooze alarm methods can be called by both alarms
+    //Calls the snooze alarm method in the clock method for the specified alarm
+    //Then updates the alarm info after clock is incremented by 5
     @FXML
     public void snoozeAlarm1(ActionEvent e){
         clk.snoozeAlarm(1);
@@ -350,30 +348,51 @@ public class AlarmClockUIController implements Initializable {
         clk.snoozeAlarm(2);
         alarm2Time.setText(clk.checkAlarmInfo(2));
     }
-
+    //The ParseAlarmTime class is in charge of parsing the set alarm inputs
+    //Its a solution to an annoying problem of note being able to return an array
+    //of multiple values. So this was my solution.
 class ParseAlarmTime {
+    //Ints its own hour/min/amPm to parse into
     int hour,min;
     String amPm;
+    
+    
+    //All of this is really overly-complicated error handling.
+    //The parse itself is fairly simple.
+    //It is able to handle most errors with a few exceptions like
+    //Setting amPm to 3 characters when you have a 1-9 in the hour
+    //Its not perfect but it gets the job done. If I had time to redo-it
+    //Id have seperate text Fields for hour/min/amPm. SOO MUCH EASIER.
     public ParseAlarmTime(String alarmStr) {
-        System.out.println(alarmStr.length());
+        //System.out.println(alarmStr.length());
+        //If the string is above 8 or below 7 ie 12:08 AM = 8 1:08 AM = 7
         if(alarmStr.length() > 8 || alarmStr.length() < 7){
+            //prints to console its invalid and sets values to default alarm values.
             System.out.println("Invalid String Length");
             hour = 12;
             min = 0;
             amPm = "AM";
         }
         else{
+        //The Parser!
+        
+        //Splits the string into two parts, with the : as the delimeter
         String[] splitStr = alarmStr.split(":");
+        //uses the check for empty method to check is hour is empty
         if (checkForEmpty(splitStr[0])){
             System.out.println("Invalid Hour");
             hour = 12;
         }
+        //sets hour equal to the left side of string turning it into a integer
         else{
             hour = Integer.parseInt(splitStr[0]);
         }
-        //hour = Integer.parseInt(splitStr[0]);
+        
+        //Sets rightHalfOfString to the right half of the string....
         String rightHalfOfAlarmStr = splitStr[1];
+        //Splits the string using a space as delimeter
         String[] minAmPm = rightHalfOfAlarmStr.split(" ");
+        //Checks if the left half of the right half of the input is empty (the minute)
         if (checkForEmpty(minAmPm[0])){
             System.out.println("Invalid Minute");
             min = 0;
@@ -381,7 +400,7 @@ class ParseAlarmTime {
         else{
             min = Integer.parseInt(minAmPm[0]);
         }
-        
+        //checks if the right half of the right half of the input is empty (AM/PM)
         if (checkForEmpty(minAmPm[1])){
             System.out.println("Invalid AmPm");
             amPm = "AM";
@@ -389,16 +408,16 @@ class ParseAlarmTime {
         else{
             amPm = minAmPm[1];
         }
-        
-        //min = Integer.parseInt(minAmPm[0]);
-        //amPm = minAmPm[1];
-        System.out.println(hour);
-        System.out.println(min);
-        System.out.println(amPm);
+      
+        //System.out.println(hour);
+        //System.out.println(min);
+        //System.out.println(amPm);
         }
     }
     
     public boolean checkForEmpty(String string){
+        //A secondary error handling method to prevent invalid inputs.
+        //checks if the inputs for the different parts of the parsed string are not empty
         if (string.equals("") || string.equals(" ") || string.equals("  ")){
             return true;
         }
@@ -406,11 +425,12 @@ class ParseAlarmTime {
             return false;
         }
     }
-
+    //Returns the alarms times in an int array. 
     public int[] getAlarmTimes(){
         int[] alarmTime = {hour,min};
         return alarmTime;
     }
+    //returns amPm as a string.
     public String getAlarmAmPm(){
         return amPm;
     }
