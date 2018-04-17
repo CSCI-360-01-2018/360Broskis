@@ -77,6 +77,7 @@ public class AlarmClockUIController implements Initializable {
         alarmToneList.add("saygoodbye.mp3");
         alarmToneList.add("legionofmonsters.mp3");
         alarmToneList.add("messengerofgod.mp3");
+        alarmToneList.add("metalgearphone.mp3");
         //inits the drop down array so user can select tone
         alarmSetTone.setItems(alarmToneList);
         //sets default alarm tone
