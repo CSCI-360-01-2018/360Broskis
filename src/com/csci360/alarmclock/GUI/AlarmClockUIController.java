@@ -30,17 +30,19 @@ import javafx.scene.control.Slider;
 
 
 
+//THe controller acts as the middle ware between the application logic and the UI
 
 public class AlarmClockUIController implements Initializable {
+    
+    //Clock / radio instances so that UI can grab text update variables
     private Clock clk;// = new Clock();
-    private Alarm testAlarm = new Alarm();
     private Radio radio;// = new Radio();
-    
     private Timer timer;
+   
     
-    private Text alarm1ActiveText;
+    //All @FXML variables represent all buttons, textfriends, and other parts of
+    //The UI that need to be connected to the application logic. 
     @FXML private TextField textF;
-    @FXML private TextField clockField;
     @FXML private TextArea  clockTextArea;
     @FXML private CheckBox alarm1ActCheck;
     @FXML private CheckBox alarm2ActCheck;
@@ -49,7 +51,6 @@ public class AlarmClockUIController implements Initializable {
     @FXML private TextField alarm1Time;
     @FXML private TextField alarm2Time;
     @FXML private ChoiceBox alarmSetTone;
-    //@FXML private ChoiceBox alarmSetTone1;
     @FXML private TextField rVolText;
     @FXML private TextField rFreqText;
     @FXML private Slider rVolSlider;
@@ -57,7 +58,8 @@ public class AlarmClockUIController implements Initializable {
     @FXML private ChoiceBox radioStationChoice;
     
     private double prevStation;
-    
+    //Creates the drop down menus for the UI to select the different tones for 
+    //alarms and radio stations
     private ObservableList<String> alarmToneList = FXCollections.observableArrayList();
     private ObservableList<String> radioStationList = FXCollections.observableArrayList();
     
@@ -65,39 +67,63 @@ public class AlarmClockUIController implements Initializable {
      * Initializes the controller class.
      */
     @Override
+    
+    //the initialize method sets up the application to be used by the UI
+    //Its acts as the middleware.
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        
+        //init radio instance
         radio = new Radio();
+        
+        //Add all alarm tones to alarms
         alarmToneList.add("alarmSound.mp3");
         alarmToneList.add("ghostdivision.mp3");
         alarmToneList.add("saygoodbye.mp3");
         alarmToneList.add("legionofmonsters.mp3");
         alarmToneList.add("messengerofgod.mp3");
-        alarmSetTone.setItems(alarmToneList);       
+        //inits the drop down array so user can select tone
+        alarmSetTone.setItems(alarmToneList);
+        //sets default alarm tone
         alarmSetTone.setValue("alarmSound.mp3");
-        
+        //sets all radio stations
         radioStationList.add("102.7");
         radioStationList.add("103.5");
         radioStationList.add("750");
         radioStationList.add("1030");
+        //inits the radio station drop menu so user can select different radio
         radioStationChoice.setItems(radioStationList);
         
+         
+         
+        //Clock is initialized as well as timer to grab time at fixed rate.
+        //The reason it is in the initalize method is so the clock starts automatically
+        //preventing a while host of bugs where buttons are pressed before clock started.
         clk = new Clock();
         timer = new Timer();
-        //clockField.setText(clk.getTime());
         clockTextArea.setText(clk.getTime());
-        System.out.println("Hi");
+        System.out.println("Clocked Started");
         
+        //At a interval set at the end of the method, the clock area is updated.
+        //Its vital that the time is the same as the rate in the clock method!
+        //Otherwise your update time isn't the same.
         timer.scheduleAtFixedRate(new TimerTask() {
            @Override
            public void run() {
-             //clockField.setText(clk.getTime()); 
+             //Update Clock text
              clockTextArea.setText(clk.getTime());
            }
+         //at this time (delay on first interval, delay on every interval)
         }, 1000, 1000);
         
     }
     
+    
+    //Check Time allows the user to restart the clock if they wish.
+    //It does this by doing the exact same thing as whats in the init method. But is activated by an
+    //action event.
+    
+    //Better way of doing it, put the checkTime into its own method that is
+    //Called by both the init method and the action event. 
    @FXML
     public void checkTime(ActionEvent e){
         clk = new Clock();
@@ -115,12 +141,18 @@ public class AlarmClockUIController implements Initializable {
         }, 1000, 1000);
     }
     
+    //These next 4 methods increment and decrement the clock by using the
+    //Dedicated methods in clock. It calls the dedicated method in clock, then
+    //updated the UI clock text area.
+    
+    //increment hour button, uses the clock method to do so
+    //Then updates the clock text in the text area
     @FXML
     public void setHourUp(ActionEvent e){
         clk.incrementHour();
         clockTextArea.setText(clk.getTime());
     }
-    
+   
     @FXML
     public void setHourDown(ActionEvent e){
         clk.decrementHour();
@@ -143,7 +175,9 @@ public class AlarmClockUIController implements Initializable {
         //clockField.setText(clk.getTime());
         clockTextArea.setText(clk.getTime());
     }
-    
+    //Alarm1Active corresponds to the check box. If the checkbox it clicked
+    ///It activates the clock instance's alarm 1. Then updates the alarm1s info
+    //in the text field
     @FXML
     public void alarm1Active(ActionEvent e){
         //alarm1.activateAlarm(alarm1ActCheck.isSelected());
@@ -154,7 +188,9 @@ public class AlarmClockUIController implements Initializable {
         }
         System.out.println(clk.checkAlarmInfo(1));
     }
-    
+     //Alarm2Active corresponds to the check box. If the checkbox it clicked
+    ///It activates the clock instance's alarm 2. Then updates the alarm1s info
+    //in the text field
     @FXML
     public void alarm2Active(ActionEvent e){
         //alarm2.activateAlarm(alarm2ActCheck.isSelected());
@@ -162,46 +198,56 @@ public class AlarmClockUIController implements Initializable {
         if(clk.getAlarm(2).getActive()) {
             clk.getAlarm(2).stopAlarm();
         }
-        //clk.
-        //System.out.println(clk.checkAlarmInfo(2));
     }
+    
+    //setAlarmTone sets the specified alarmTone to both alarm one and two.
     @FXML
     public void setAlarmTone(ActionEvent e) {
-            //File file=new File("alarmSound.mp3");
-    //Media m = new Media(file.toURI().toString());
-            //
-        //String tone = alarmSetTone.getText();
+        //Grab the selected tone
         String tone = alarmSetTone.getValue().toString();
-        
+        //Find the file and generate path
         File file = new File(tone);
         Media m = new Media(file.toURI().toString());
+        //Sets tone to alarm 1 and 2
         clk.getAlarm(1).setTone(m);
         clk.getAlarm(2).setTone(m);
+        //If the testbutton was pressed to test the tone and is currenly playing.
+        //stop the player.
         if(clk.getAlarm(1).getTestPlaying()) {
             clk.getAlarm(1).getMediaPlayer().stop();
             clk.getAlarm(1).setTestPlaying(false);
         }
+        //Same thing for alarm 2
         if(clk.getAlarm(2).getTestPlaying()) {
             clk.getAlarm(2).getMediaPlayer().stop();
             clk.getAlarm(2).setTestPlaying(false);
         }
     }
     
+    //Set alarm one time uses the parser class (below) to take in the string entered
+    //and uses the values parsed to call the alarm method to set the alarm for alarm1. 
     @FXML
     public void setAlarm1Time(ActionEvent e){
         if(alarm1SetTime.getText() != null){
         // Set alarm 1 time
+            //Upon set alarm button, get the text
             String setTime = alarm1SetTime.getText();
+            //Creates an instance of the parse class. I wasn't able to return
+            //multiple values of different types, so I used a class.
+            //The constructor takes in the input when its created
             ParseAlarmTime alarmOneSettings = new ParseAlarmTime(setTime);
+            //Using the methods in the class you can grab an integer a array that holds/
+            //hour and min
             int[] alarmTimes = alarmOneSettings.getAlarmTimes();
+            //As well as a string that holds the AM/PM
             String amPm = alarmOneSettings.getAlarmAmPm();
+            //Set the alarm with the values given
             clk.setAlarm(alarmTimes[0], alarmTimes[1], amPm, 1);
-            //clk.getAlarm(1).alignTime();
-        
+            //Update text field
             alarm1Time.setText(clk.checkAlarmInfo(1));
         }
     }
-    
+    //Set Alarm 2, is an exact copy of setAlarm1Time. Refer to comments in that method.
     @FXML
     public void setAlarm2Time(ActionEvent e){
         
@@ -211,30 +257,24 @@ public class AlarmClockUIController implements Initializable {
         String amPm = alarmTwoSettings.getAlarmAmPm();
         System.out.println(amPm);
         clk.setAlarm(alarmTimes[0], alarmTimes[1], amPm, 2);
-        
-        //clk.getAlarm(2).alignTime();
-        
         alarm2Time.setText(clk.checkAlarmInfo(2));
     }
-    
-    @FXML
-    public void setTextField(ActionEvent e) {
-        //clk.setAlarm(8, 10, "AM", 1);
-        //alarm1.setAlarmTime(8, 10, "AM");
-        textF.setText("Butts");
-        //textF.setText(alarm1.getAlarmInfo().toString());
-        
-    }
-    
+   //alarmTest1, Allows the user to test the currently set tone.
+    //There is a better way of doing this method as well. Without
+    //Having to define new methods and boolean variables
     @FXML
     public void alarmTest1(){
+        //Checks if the alarm1 testPlayer is playing
         if(clk.getAlarm(1).getTestPlaying()) {
+            //If so stops it
             clk.getAlarm(1).getMediaPlayer().stop();
+            //Sets the boolean varible to false
             clk.getAlarm(1).setTestPlaying(false);
         }
+        //Starts playing the new tone
         clk.getAlarm(1).testAlarm();
     }
-    
+    //Exact copy for alarmTest1
     @FXML
     public void alarmTest2(){
         if(clk.getAlarm(2).getTestPlaying()) {

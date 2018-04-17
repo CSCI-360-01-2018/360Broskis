@@ -211,11 +211,11 @@ public class Clock{
         }
     }
     
-    //Returns Hour for testing purposes
+    //Returns Hour for testing purposes/checking validity
     public int getHour() {
         return hour;
     }
-    //Returns Min for testing purposes
+    //Returns Min for testing purposes/checking validity
     public int getMinute() {
         return minute;
     }
