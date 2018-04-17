@@ -138,15 +138,7 @@ public class Clock{
     public void terminateClock() {
         clock.cancel();
     }
-    /**
-    public void alignTime(){
-        if(hour > 12){
-            hour %= 12;
-            //switchAmPm(amPm);
-        }
-    }
-    */
-    
+    //Switches am for pm and vice versa
     private void switchAmPm(){
         if(amPm.equals("AM")){
             amPm = "PM";

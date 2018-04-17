@@ -11,10 +11,8 @@ import javafx.fxml.Initializable;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.text.Text;
-import javafx.event.ActionEvent;
-import javafx.util.Duration;  
+import javafx.event.ActionEvent; 
 import javafx.scene.media.Media;  
-import javafx.scene.media.MediaPlayer; 
 
 
 import com.csci360.alarmclock.clockModule.Alarm;
@@ -22,26 +20,20 @@ import com.csci360.alarmclock.clockModule.Clock;
 import com.csci360.alarmclock.radioModule.Radio;
 import com.csci360.alarmclock.radioModule.Station;
 import java.io.File;
-import java.text.NumberFormat;
 import java.util.Timer;
 import java.util.TimerTask;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Slider;
-import javafx.scene.input.DragEvent;
-//import com.csci360.alarmclock.clockModule.alarm;
 
-/**
- * FXML Controller class
- *
- * @author Austin
- */
+
+
+
+
 public class AlarmClockUIController implements Initializable {
     private Clock clk;// = new Clock();
     private Alarm testAlarm = new Alarm();
-    //private Alarm alarm2 = new Alarm();
     private Radio radio;// = new Radio();
     
     private Timer timer;
