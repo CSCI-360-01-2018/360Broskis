@@ -5,6 +5,8 @@
  */
 package com.csci360.alarmclock.radioModule;
 
+import javafx.scene.media.MediaPlayer;
+import javafx.scene.media.MediaPlayer.Status;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -38,41 +40,28 @@ public class StationTest {
     }
 
     /**
-     * Test of setStation method, of class Station.
+     * Test of clearStation method, of class Station.
      */
     @Test
-    public void testSetStation() {
-        System.out.println("setStation");
-        float frequency = 0.0F;
-        float newStation = 99.1F;
-        Station instance = new Station(frequency);
-        instance.setStation(newStation);
+    public void testClearStation() {
+        //Default fail, need java FX to use media player
+        System.out.println("clearStation");
+        Station instance = new Station();
+        instance.clearStation();
         // TODO review the generated test code and remove the default call to fail.
-        if(instance.getFrequency() == newStation){
-            System.out.println("Set frequency of station");
-            return;
-        }
         fail("The test case is a prototype.");
     }
 
-  
-    /**
-     * Test of getFrequency method, of class Station.
-     */
     @Test
-    public void testGetFrequency() {
-        System.out.println("getFrequency");
-        float expResult = 5.5F;
-        Station instance = new Station(expResult);
-        float result = instance.getFrequency();
-        
-        assertEquals(expResult, result, 0.0);
+    public void testPlayStation() {
+        //Default fail, need java FX to use media player
+        System.out.println("playStation");
+        Station instance = new Station();
+        instance.setMedia("saygoodbye.mp3");
+        instance.playStation();
         // TODO review the generated test code and remove the default call to fail.
-        if(expResult == result){
-            System.out.println("Retrieved frequency");
-            return;
-        }
         fail("The test case is a prototype.");
     }
-    
+
+   
 }

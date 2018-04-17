@@ -37,39 +37,6 @@ public class VolumeTest {
     public void tearDown() {
     }
 
-    /**
-     * Test of setVolume method, of class Volume.
-     */
-    @Test
-    public void testSetVolume() {
-        System.out.println("setVolume");
-        int vol = 0;
-        Volume instance = new Volume();
-        instance.setVolume(vol);
-        // TODO review the generated test code and remove the default call to fail.
-        if(instance.getVolume() == vol){
-            System.out.println("Set volume to 0");
-            return;
-        }
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of getVolume method, of class Volume.
-     */
-    @Test
-    public void testGetVolume() {
-        System.out.println("getVolume");
-        Volume instance = new Volume();
-        int expResult = 0;
-        int result = instance.getVolume();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        if(expResult == result){
-            System.out.println("Retrieved volume");
-            return;
-        }
-        fail("The test case is a prototype.");
-    }
+   
     
 }
