@@ -2,11 +2,12 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Slider?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.control.ToggleButton?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
@@ -19,21 +20,21 @@
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <TextField fx:id="clockField" layoutX="164.0" layoutY="162.0">
-                           <font>
-                              <Font size="22.0" />
-                           </font>
-                        </TextField>
-                        <Text layoutX="276.0" layoutY="156.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Time">
+                        <Text layoutX="366.0" layoutY="143.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Time">
                            <font>
                               <Font size="22.0" />
                            </font>
                         </Text>
-                        <Button layoutX="253.0" layoutY="14.0" mnemonicParsing="false" onAction="#checkTime" prefHeight="49.0" prefWidth="96.0" text="Start Clock" />
-                        <Button layoutX="164.0" layoutY="230.0" mnemonicParsing="false" onAction="#setHourUp" text="+Hour" />
-                        <Button layoutX="227.0" layoutY="230.0" mnemonicParsing="false" onAction="#setMinuteUp" text="+Minute" />
-                        <Button layoutX="164.0" layoutY="265.0" mnemonicParsing="false" onAction="#setHourDown" text="-Hour" />
-                        <Button layoutX="227.0" layoutY="265.0" mnemonicParsing="false" onAction="#setMinuteDown" text="-Minute" />
+                        <Button layoutX="309.0" layoutY="14.0" mnemonicParsing="false" onAction="#checkTime" prefHeight="49.0" prefWidth="96.0" text="Start Clock" />
+                        <Button layoutX="151.0" layoutY="200.0" mnemonicParsing="false" onAction="#setHourUp" text="+Hour" />
+                        <Button layoutX="409.0" layoutY="200.0" mnemonicParsing="false" onAction="#setMinuteUp" text="+Minute" />
+                        <Button layoutX="221.0" layoutY="201.0" mnemonicParsing="false" onAction="#setHourDown" text="-Hour" />
+                        <Button layoutX="493.0" layoutY="201.0" mnemonicParsing="false" onAction="#setMinuteDown" text="-Minute" />
+                        <TextArea fx:id="clockTextArea" layoutX="151.0" layoutY="77.0" prefHeight="65.0" prefWidth="411.0">
+                           <font>
+                              <Font size="34.0" />
+                           </font>
+                        </TextArea>
                      </children>
                   </AnchorPane>
             </content>
@@ -42,42 +43,58 @@
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="367.0" prefWidth="751.0">
                      <children>
-                        <TextField fx:id="alarm1Time" layoutX="14.0" layoutY="162.0">
+                        <TextField fx:id="alarm1Time" layoutX="18.0" layoutY="73.0">
                            <font>
                               <Font size="22.0" />
                            </font>
                         </TextField>
-                        <Text layoutX="14.0" layoutY="139.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Alarm 1 Time">
+                        <Text layoutX="95.0" layoutY="58.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Alarm 1 Time">
                            <font>
                               <Font size="22.0" />
                            </font>
                         </Text>
-                        <TextField fx:id="alarm2Time" layoutX="313.0" layoutY="161.0">
+                        <TextField fx:id="alarm2Time" layoutX="25.0" layoutY="255.0">
                            <font>
                               <Font size="22.0" />
                            </font>
                         </TextField>
-                        <Text layoutX="457.0" layoutY="139.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Alarm 2 Time">
+                        <Text layoutX="85.0" layoutY="240.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Alarm 2 Time">
                            <font>
                               <Font size="22.0" />
                            </font>
                         </Text>
-                        <CheckBox fx:id="alarm1ActCheck" layoutX="14.0" layoutY="219.0" mnemonicParsing="false" onAction="#alarm1Active" text="Alarm 1 Active">
+                        <CheckBox fx:id="alarm1ActCheck" layoutX="19.0" layoutY="123.0" mnemonicParsing="false" onAction="#alarm1Active" prefHeight="31.0" prefWidth="286.0" text="Alarm 1 Active">
                            <font>
                               <Font size="22.0" />
                            </font>
                         </CheckBox>
-                        <ToggleButton layoutX="14.0" layoutY="279.0" mnemonicParsing="false" text="Alarm 1 Active TEST" />
-                        <CheckBox fx:id="alarm2ActCheck" layoutX="404.0" layoutY="219.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onAction="#alarm2Active" text="Alarm 2 Active">
+                        <TextField fx:id="alarm1SetTime" layoutX="420.0" layoutY="73.0" prefHeight="34.0" prefWidth="171.0" promptText="12:00 AM">
+                           <font>
+                              <Font size="17.0" />
+                           </font></TextField>
+                        <Button fx:id="setAlarm1Button" layoutX="327.0" layoutY="73.0" mnemonicParsing="false" onAction="#setAlarm1Time" prefHeight="34.0" prefWidth="95.0" text="Set Alarm 1" />
+                        <Button fx:id="testAlarmButton2" layoutX="470.0" layoutY="115.0" mnemonicParsing="false" onAction="#alarmTest1" prefHeight="54.0" prefWidth="120.0" text="Test Alarm 1" />
+                        <CheckBox fx:id="alarm2ActCheck" layoutX="25.0" layoutY="302.0" mnemonicParsing="false" onAction="#alarm2Active" prefHeight="31.0" prefWidth="286.0" text="Alarm 2 Active">
                            <font>
                               <Font size="22.0" />
                            </font>
                         </CheckBox>
-                        <ToggleButton layoutX="465.0" layoutY="279.0" mnemonicParsing="false" text="Alarm 2 Active TEST" />
-                        <TextField fx:id="alarm1SetTime" layoutX="14.0" layoutY="322.0" promptText="Set Alarm Time" />
-                        <TextField fx:id="alarm2SetTime" layoutX="437.0" layoutY="322.0" promptText="Set Alarm Time" />
-                        <Button fx:id="setAlarm1Button" layoutX="170.0" layoutY="322.0" mnemonicParsing="false" onAction="#setAlarm1Time" text="Set Alarm 1" />
-                        <Button fx:id="setAlarm2Button" layoutX="351.0" layoutY="322.0" mnemonicParsing="false" onAction="#setAlarm2Time" text="Set Alarm 2" />
+                        <Button fx:id="snoozeAlarm1" layoutX="328.0" layoutY="115.0" mnemonicParsing="false" onAction="#snoozeAlarm1" prefHeight="54.0" prefWidth="120.0" text="Snooze" />
+                        <Button fx:id="testAlarmButton2" layoutX="478.0" layoutY="292.0" mnemonicParsing="false" onAction="#alarmTest2" prefHeight="54.0" prefWidth="120.0" text="Test Alarm 2" />
+                        <Button fx:id="snoozeAlarm2" layoutX="332.0" layoutY="293.0" mnemonicParsing="false" onAction="#snoozeAlarm2" prefHeight="54.0" prefWidth="120.0" text="Snooze " />
+                        <TextField fx:id="alarm2SetTime" layoutX="426.0" layoutY="250.0" prefHeight="34.0" prefWidth="171.0" promptText="12:00 AM">
+                           <font>
+                              <Font size="17.0" />
+                           </font>
+                        </TextField>
+                        <Button fx:id="setAlarm2Button" layoutX="332.0" layoutY="250.0" mnemonicParsing="false" onAction="#setAlarm2Time" prefHeight="34.0" prefWidth="95.0" text="Set Alarm 1" />
+                        <ChoiceBox fx:id="alarmSetTone" layoutX="621.0" layoutY="78.0" prefWidth="150.0" />
+                        <Button fx:id="setAlarmButton" layoutX="651.0" layoutY="121.0" mnemonicParsing="false" onAction="#setAlarmTone" prefHeight="54.0" prefWidth="120.0" text="Set Alarm Tone" />
+                        <Text layoutX="671.0" layoutY="70.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Alarm Tones">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Text>
                      </children>
                   </AnchorPane>
             </content>
@@ -86,20 +103,31 @@
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <Slider fx:id="rVolSlider" layoutX="40.0" layoutY="215.0" onDragDone="#setRadioVol" orientation="VERTICAL" showTickLabels="true" />
-                        <Text layoutX="11.0" layoutY="179.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Volume" wrappingWidth="112.79296875">
+                        <Slider fx:id="rVolSlider" layoutX="32.0" layoutY="127.0" majorTickUnit="10.0" onDragDone="#setRadioVol" orientation="VERTICAL" prefHeight="188.0" prefWidth="36.0" showTickLabels="true" />
+                        <Text layoutX="14.0" layoutY="86.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Volume" wrappingWidth="112.79296875">
                            <font>
                               <Font size="22.0" />
                            </font>
                         </Text>
-                        <Text layoutX="199.0" layoutY="179.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Frequency">
+                        <Text layoutX="112.0" layoutY="86.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Frequency">
                            <font>
                               <Font size="22.0" />
                            </font>
                         </Text>
-                        <Slider fx:id="rFreqSlider" layoutX="242.0" layoutY="215.0" orientation="VERTICAL" />
-                        <TextField fx:id="rVolText" layoutX="11.0" layoutY="187.0" onAction="#setRadioVol" prefHeight="25.0" prefWidth="72.0" />
-                        <TextField fx:id="rFreqText" layoutX="213.0" layoutY="187.0" onAction="#setRadioFreq" prefHeight="25.0" prefWidth="72.0" />
+                        <TextField fx:id="rVolText" layoutX="14.0" layoutY="92.0" onAction="#setRadioVol" prefHeight="25.0" prefWidth="72.0" />
+                        <TextField fx:id="rFreqText" layoutX="112.0" layoutY="92.0" onAction="#setRadioFreq" prefHeight="25.0" prefWidth="72.0" />
+                        <CheckBox fx:id="radioActiveCheck" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#setRadioActive" prefHeight="36.0" prefWidth="164.0" text="Radio Active">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </CheckBox>
+                        <ChoiceBox fx:id="radioStationChoice" layoutX="237.0" layoutY="92.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="45.0" prefWidth="115.0" />
+                        <Text layoutX="237.0" layoutY="86.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Radio Stations" wrappingWidth="173.13671875">
+                           <font>
+                              <Font size="22.0" />
+                           </font>
+                        </Text>
+                        <Button fx:id="setRadioStationButton" layoutX="237.0" layoutY="141.0" mnemonicParsing="false" onAction="#setRadioFreq" prefHeight="45.0" prefWidth="115.0" text="Set Radio Station" />
                      </children>
                   </AnchorPane>
               </content>
