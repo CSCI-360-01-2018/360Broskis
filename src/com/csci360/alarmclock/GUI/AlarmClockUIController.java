@@ -39,7 +39,7 @@ public class AlarmClockUIController implements Initializable {
     //All @FXML variables represent all buttons, textfriends, and other parts of
     //The UI that need to be connected to the application logic. 
     @FXML private TextField textF;
-    @FXML private TextArea  clockTextArea;
+    @FXML private TextField  clockTextArea;
     @FXML private CheckBox alarm1ActCheck;
     @FXML private CheckBox alarm2ActCheck;
     @FXML private TextField alarm1SetTime;
