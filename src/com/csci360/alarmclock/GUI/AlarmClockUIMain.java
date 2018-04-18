@@ -1,31 +1,27 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package com.csci360.alarmclock.GUI;
 
 import java.io.IOException;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.BorderPane;
-import javafx.stage.Stage;
 
 
 
 import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.BorderPane;
 
+//Main class of our UI.
 
+// It loads the actual UI for the user to see.
 public class AlarmClockUIMain extends Application {
 
 private Stage primaryStage;
 
+//The overrideen start method, sets the main window as the primary stage.
+//Then when the window closes, it ends the program. This was a major bug that
+//Found. 
 @Override
 public void start(Stage primaryStage) {
 
@@ -33,6 +29,8 @@ mainWindow(primaryStage);
 primaryStage.setOnCloseRequest(e -> System.exit(0));
 }
 
+
+//Loads are fxml file for the user to interact with.
 public void mainWindow(Stage primaryStage) {
     try {
         FXMLLoader loader =new FXMLLoader(AlarmClockUIMain.class.getResource("AlarmClockUI.fxml"));
