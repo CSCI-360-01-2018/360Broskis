@@ -6,13 +6,12 @@
 <?import javafx.scene.control.Slider?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
-<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.csci360.alarmclock.GUI.AlarmClockUIController">
+<AnchorPane id="AnchorPane" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.csci360.alarmclock.GUI.AlarmClockUIController">
    <children>
       <TabPane prefHeight="400.0" prefWidth="800.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <tabs>
@@ -20,21 +19,16 @@
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <Text layoutX="366.0" layoutY="143.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Time">
-                           <font>
-                              <Font size="22.0" />
-                           </font>
-                        </Text>
                         <Button layoutX="309.0" layoutY="14.0" mnemonicParsing="false" onAction="#checkTime" prefHeight="49.0" prefWidth="96.0" text="Start Clock" />
                         <Button layoutX="151.0" layoutY="200.0" mnemonicParsing="false" onAction="#setHourUp" text="+Hour" />
                         <Button layoutX="409.0" layoutY="200.0" mnemonicParsing="false" onAction="#setMinuteUp" text="+Minute" />
                         <Button layoutX="221.0" layoutY="201.0" mnemonicParsing="false" onAction="#setHourDown" text="-Hour" />
                         <Button layoutX="493.0" layoutY="201.0" mnemonicParsing="false" onAction="#setMinuteDown" text="-Minute" />
-                        <TextArea fx:id="clockTextArea" layoutX="151.0" layoutY="77.0" prefHeight="65.0" prefWidth="411.0">
+                        <TextField fx:id="clockTextArea" alignment="TOP_CENTER" layoutX="151.0" layoutY="83.0" prefHeight="100.0" prefWidth="409.0">
                            <font>
-                              <Font size="34.0" />
+                              <Font size="50.0" />
                            </font>
-                        </TextArea>
+                        </TextField>
                      </children>
                   </AnchorPane>
             </content>
