@@ -97,31 +97,36 @@
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <Slider fx:id="rVolSlider" layoutX="32.0" layoutY="127.0" majorTickUnit="10.0" onDragDone="#setRadioVol" orientation="VERTICAL" prefHeight="188.0" prefWidth="36.0" showTickLabels="true" />
-                        <Text layoutX="14.0" layoutY="86.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Volume" wrappingWidth="112.79296875">
+                        <Slider fx:id="rVolSlider" layoutX="489.0" layoutY="146.0" majorTickUnit="10.0" onDragDone="#setRadioVol" orientation="VERTICAL" prefHeight="188.0" prefWidth="36.0" showTickLabels="true" />
+                        <Text layoutX="104.0" layoutY="210.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Volume" wrappingWidth="165.79296875">
                            <font>
                               <Font size="22.0" />
                            </font>
                         </Text>
-                        <Text layoutX="112.0" layoutY="86.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Frequency">
-                           <font>
-                              <Font size="22.0" />
-                           </font>
-                        </Text>
-                        <TextField fx:id="rVolText" layoutX="14.0" layoutY="92.0" onAction="#setRadioVol" prefHeight="25.0" prefWidth="72.0" />
-                        <TextField fx:id="rFreqText" layoutX="112.0" layoutY="92.0" onAction="#setRadioFreq" prefHeight="25.0" prefWidth="72.0" />
-                        <CheckBox fx:id="radioActiveCheck" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#setRadioActive" prefHeight="36.0" prefWidth="164.0" text="Radio Active">
+                        <TextField fx:id="rVolText" layoutX="300.0" layoutY="194.0" onAction="#setRadioVol" prefHeight="26.0" prefWidth="118.0" />
+                        <TextField fx:id="rFreqText" layoutX="300.0" layoutY="154.0" onAction="#setRadioFreq" prefHeight="26.0" prefWidth="118.0" />
+                        <CheckBox fx:id="radioActiveCheck" layoutX="107.0" layoutY="238.0" mnemonicParsing="false" onAction="#setRadioActive" prefHeight="36.0" prefWidth="313.0" text="Turn Radio On and Off">
                            <font>
                               <Font size="18.0" />
                            </font>
                         </CheckBox>
-                        <ChoiceBox fx:id="radioStationChoice" layoutX="237.0" layoutY="92.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="45.0" prefWidth="115.0" />
-                        <Text layoutX="237.0" layoutY="86.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Radio Stations" wrappingWidth="173.13671875">
+                        <ChoiceBox fx:id="radioStationChoice" layoutX="299.0" layoutY="93.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="45.0" prefWidth="115.0" />
+                        <Text layoutX="101.0" layoutY="122.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Radio Stations" textAlignment="CENTER" wrappingWidth="173.13671875">
                            <font>
                               <Font size="22.0" />
                            </font>
                         </Text>
-                        <Button fx:id="setRadioStationButton" layoutX="237.0" layoutY="141.0" mnemonicParsing="false" onAction="#setRadioFreq" prefHeight="45.0" prefWidth="115.0" text="Set Radio Station" />
+                        <Button fx:id="setRadioStationButton" layoutX="444.0" layoutY="94.0" mnemonicParsing="false" onAction="#setRadioFreq" prefHeight="45.0" prefWidth="115.0" text="Set Radio Station" />
+                        <Text layoutX="106.0" layoutY="175.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Frequency" wrappingWidth="165.79296875">
+                           <font>
+                              <Font size="22.0" />
+                           </font>
+                        </Text>
+                        <Text layoutX="272.0" layoutY="43.0" strokeType="OUTSIDE" strokeWidth="0.0" text="AM/FM Radio" textAlignment="CENTER" wrappingWidth="173.13671875">
+                           <font>
+                              <Font size="22.0" />
+                           </font>
+                        </Text>
                      </children>
                   </AnchorPane>
               </content>
