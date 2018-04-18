@@ -97,26 +97,26 @@
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <Slider fx:id="rVolSlider" layoutX="489.0" layoutY="146.0" majorTickUnit="10.0" onDragDone="#setRadioVol" orientation="VERTICAL" prefHeight="188.0" prefWidth="36.0" showTickLabels="true" />
+                        <Slider fx:id="rVolSlider" layoutX="467.0" layoutY="144.0" majorTickUnit="10.0" onDragDone="#setRadioVol" orientation="VERTICAL" prefHeight="188.0" prefWidth="36.0" showTickLabels="true" />
                         <Text layoutX="104.0" layoutY="210.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Volume" wrappingWidth="165.79296875">
                            <font>
                               <Font size="22.0" />
                            </font>
                         </Text>
-                        <TextField fx:id="rVolText" layoutX="300.0" layoutY="194.0" onAction="#setRadioVol" prefHeight="26.0" prefWidth="118.0" />
-                        <TextField fx:id="rFreqText" layoutX="300.0" layoutY="154.0" onAction="#setRadioFreq" prefHeight="26.0" prefWidth="118.0" />
-                        <CheckBox fx:id="radioActiveCheck" layoutX="107.0" layoutY="238.0" mnemonicParsing="false" onAction="#setRadioActive" prefHeight="36.0" prefWidth="313.0" text="Turn Radio On and Off">
+                        <TextField fx:id="rVolText" layoutX="300.0" layoutY="194.0" onAction="#setRadioVol" prefHeight="26.0" prefWidth="141.0" />
+                        <TextField fx:id="rFreqText" layoutX="300.0" layoutY="154.0" onAction="#setRadioFreq" prefHeight="26.0" prefWidth="141.0" />
+                        <CheckBox fx:id="radioActiveCheck" layoutX="102.0" layoutY="236.0" mnemonicParsing="false" onAction="#setRadioActive" prefHeight="36.0" prefWidth="313.0" text="Turn Radio On and Off">
                            <font>
                               <Font size="18.0" />
                            </font>
                         </CheckBox>
-                        <ChoiceBox fx:id="radioStationChoice" layoutX="299.0" layoutY="93.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="45.0" prefWidth="115.0" />
+                        <ChoiceBox fx:id="radioStationChoice" layoutX="299.0" layoutY="93.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="45.0" prefWidth="143.0" />
                         <Text layoutX="101.0" layoutY="122.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Radio Stations" textAlignment="CENTER" wrappingWidth="173.13671875">
                            <font>
                               <Font size="22.0" />
                            </font>
                         </Text>
-                        <Button fx:id="setRadioStationButton" layoutX="444.0" layoutY="94.0" mnemonicParsing="false" onAction="#setRadioFreq" prefHeight="45.0" prefWidth="115.0" text="Set Radio Station" />
+                        <Button fx:id="setRadioStationButton" layoutX="467.0" layoutY="93.0" mnemonicParsing="false" onAction="#setRadioFreq" prefHeight="45.0" prefWidth="150.0" text="Set Radio Station" />
                         <Text layoutX="106.0" layoutY="175.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Frequency" wrappingWidth="165.79296875">
                            <font>
                               <Font size="22.0" />
