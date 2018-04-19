@@ -97,7 +97,7 @@
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <Slider fx:id="rVolSlider" layoutX="467.0" layoutY="144.0" majorTickUnit="10.0" onDragDone="#setRadioVol" orientation="VERTICAL" prefHeight="188.0" prefWidth="36.0" showTickLabels="true" />
+                        <Slider fx:id="rVolSlider" layoutX="467.0" layoutY="144.0" majorTickUnit="20.0" minorTickCount="20" onDragDetected="#testSlider" onDragOver="#testSlider" orientation="VERTICAL" prefHeight="188.0" prefWidth="72.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" />
                         <Text layoutX="104.0" layoutY="210.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Volume" wrappingWidth="165.79296875">
                            <font>
                               <Font size="22.0" />

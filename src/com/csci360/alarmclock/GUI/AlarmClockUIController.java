@@ -8,6 +8,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.text.Text;
 import javafx.event.ActionEvent; 
+import javafx.scene.input.MouseEvent;
 import javafx.scene.media.Media;  
 
 
@@ -22,13 +23,15 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Slider;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 
 
 
 
 //THe controller acts as the middle ware between the application logic and the UI
 
-public class AlarmClockUIController implements Initializable {
+public class AlarmClockUIController implements Initializable,ChangeListener {
     
     //Clock / radio instances so that UI can grab text update variables
     private Clock clk;// = new Clock();
@@ -90,6 +93,9 @@ public class AlarmClockUIController implements Initializable {
         //inits the radio station drop menu so user can select different radio
         radioStationChoice.setItems(radioStationList);
         
+        //Whats hopefully a listener for change in volume
+        rVolSlider.valueProperty().addListener(this);
+        
          
          
         //Clock is initialized as well as timer to grab time at fixed rate.
@@ -113,7 +119,15 @@ public class AlarmClockUIController implements Initializable {
         }, 1000, 1000);
         
     }
-    
+    @Override
+    public void changed(ObservableValue observable, Object oldValue, Object newValue) {
+            System.out.println("listener worked");
+            double newVolume = rVolSlider.getValue();
+            Double vol = newVolume * .01;
+            System.out.println(newVolume);
+            if(!rFreqText.getText().equals(""))
+            radio.findStation( Double.parseDouble(rFreqText.getText()) ).getMediaPlayer().setVolume( vol );
+    }
     
     //Check Time allows the user to restart the clock if they wish.
     //It does this by doing the exact same thing as whats in the init method. But is activated by an
@@ -307,6 +321,11 @@ public class AlarmClockUIController implements Initializable {
     }
     
     @FXML
+    public void testSlider(MouseEvent e){
+        System.out.println("Slider method called");
+    }
+    
+    @FXML
     public void setRadioFreq(ActionEvent e) {
         rFreqText.setText(radioStationChoice.getValue().toString());
         
@@ -349,6 +368,8 @@ public class AlarmClockUIController implements Initializable {
         clk.snoozeAlarm(2);
         alarm2Time.setText(clk.checkAlarmInfo(2));
     }
+    
+        
     //The ParseAlarmTime class is in charge of parsing the set alarm inputs
     //Its a solution to an annoying problem of note being able to return an array
     //of multiple values. So this was my solution.
