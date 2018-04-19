@@ -50,9 +50,9 @@ public class AlarmClockUIController implements Initializable,ChangeListener {
     @FXML private TextField alarm1Time;
     @FXML private TextField alarm2Time;
     @FXML private ChoiceBox alarmSetTone;
-    @FXML private TextField rVolText;
     @FXML private TextField rFreqText;
     @FXML private Slider rVolSlider;
+     @FXML private Slider setVolAlarm;
     @FXML private CheckBox radioActiveCheck;
     @FXML private ChoiceBox radioStationChoice;
     
@@ -95,6 +95,8 @@ public class AlarmClockUIController implements Initializable,ChangeListener {
         
         //Whats hopefully a listener for change in volume
         rVolSlider.valueProperty().addListener(this);
+        setVolAlarm.valueProperty().addListener(this);
+        setVolAlarm.setValue(100);
         
          
          
@@ -121,12 +123,21 @@ public class AlarmClockUIController implements Initializable,ChangeListener {
     }
     @Override
     public void changed(ObservableValue observable, Object oldValue, Object newValue) {
-            System.out.println("listener worked");
-            double newVolume = rVolSlider.getValue();
-            Double vol = newVolume * .01;
-            System.out.println(newVolume);
+            //System.out.println("listener worked");
+            double radioVolume = rVolSlider.getValue();
+            double newRadioVolume = radioVolume * .01;
+            double alarmVolume = setVolAlarm.getValue();
+            Double newAlarmVolume = alarmVolume * .01;
+            //Integer radioVolumeAsInteger = newRadioVolume.intValue(); 
+            //rVolText.setText( Integer.toString((int) newRadioVolume * 10));
+            
+            //System.out.println(newVolume);
             if(!rFreqText.getText().equals(""))
-            radio.findStation( Double.parseDouble(rFreqText.getText()) ).getMediaPlayer().setVolume( vol );
+            radio.findStation( Double.parseDouble(rFreqText.getText()) ).getMediaPlayer().setVolume( newRadioVolume );
+            if(alarm1ActCheck.isSelected())
+            clk.getAlarm(1).setVolume(newAlarmVolume);
+            if(alarm2ActCheck.isSelected())
+            clk.getAlarm(2).setVolume(newAlarmVolume);
     }
     
     //Check Time allows the user to restart the clock if they wish.
@@ -304,7 +315,7 @@ public class AlarmClockUIController implements Initializable,ChangeListener {
             radio.findStation(d).clearStation();
         }
     }
-    
+    /**
     @FXML
     public void setRadioVol(ActionEvent e) {
         //Station sta = radio.findStation( Double.parseDouble(rFreqText.getText()) );
@@ -319,10 +330,11 @@ public class AlarmClockUIController implements Initializable,ChangeListener {
             clk.getAlarm(2).setVolume(vol);
         //radio.findStation( Double.parseDouble(rFreqText.getText()) ).setMediaVol( Double.parseDouble(rVolText.getText()));
     }
+    */
     
     @FXML
     public void testSlider(MouseEvent e){
-        System.out.println("Slider method called");
+        //System.out.println("Slider method called");
     }
     
     @FXML
@@ -350,7 +362,7 @@ public class AlarmClockUIController implements Initializable,ChangeListener {
             
             Double vol = radio.findStation(prevStation).getMediaPlayer().getVolume() * 100;
             int ivol = vol.intValue();
-            rVolText.setText( Integer.toString(ivol) );
+            //rVolText.setText( Integer.toString(ivol) );
             rVolSlider.setValue(ivol);
             
         }
