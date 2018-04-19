@@ -43,13 +43,21 @@ public class Alarm {
         }
         //Min is invalid if its over 60 or below 0
         if(min >= 60 || min < 0){
-            System.out.println("Invalid Minuite");
+            System.out.println("Invalid Minute");
             min = 0;
         }
         //sets variables accoringly
         hour = hr;
         minute = min;
-        this.amPm = amPm;
+        
+        if (!(amPm.equals("AM") || amPm.equals("PM"))){
+            System.out.println("Invalid AM/PM");
+            
+        }
+        else{
+             this.amPm = amPm;
+        }
+
     }
     //Sets the alarm active so that when startAlarm() is called, the tone will play
     public void activateAlarm(boolean active) {

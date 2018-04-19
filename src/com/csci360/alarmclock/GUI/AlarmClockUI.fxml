@@ -83,12 +83,13 @@
                         </TextField>
                         <Button fx:id="setAlarm2Button" layoutX="332.0" layoutY="250.0" mnemonicParsing="false" onAction="#setAlarm2Time" prefHeight="34.0" prefWidth="95.0" text="Set Alarm 1" />
                         <ChoiceBox fx:id="alarmSetTone" layoutX="621.0" layoutY="78.0" prefWidth="150.0" />
-                        <Button fx:id="setAlarmButton" layoutX="651.0" layoutY="121.0" mnemonicParsing="false" onAction="#setAlarmTone" prefHeight="54.0" prefWidth="120.0" text="Set Alarm Tone" />
-                        <Text layoutX="671.0" layoutY="70.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Alarm Tones">
+                        <Button fx:id="setAlarmButton" layoutX="621.0" layoutY="121.0" mnemonicParsing="false" onAction="#setAlarmTone" prefHeight="54.0" prefWidth="120.0" text="Set Alarm Tone" />
+                        <Text layoutX="622.0" layoutY="70.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Alarm Tones">
                            <font>
                               <Font size="18.0" />
                            </font>
                         </Text>
+                        <Slider fx:id="setVolAlarm" layoutX="763.0" layoutY="130.0" majorTickUnit="20.0" orientation="VERTICAL" prefHeight="231.0" prefWidth="16.0" showTickLabels="true" showTickMarks="true" />
                      </children>
                   </AnchorPane>
             </content>
@@ -97,13 +98,11 @@
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <Slider fx:id="rVolSlider" layoutX="467.0" layoutY="144.0" majorTickUnit="20.0" minorTickCount="20" onDragDetected="#testSlider" onDragOver="#testSlider" orientation="VERTICAL" prefHeight="188.0" prefWidth="72.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" />
-                        <Text layoutX="104.0" layoutY="210.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Volume" wrappingWidth="165.79296875">
+                        <Text layoutX="107.0" layoutY="224.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Volume" wrappingWidth="165.79296875">
                            <font>
                               <Font size="22.0" />
                            </font>
                         </Text>
-                        <TextField fx:id="rVolText" layoutX="300.0" layoutY="194.0" onAction="#setRadioVol" prefHeight="26.0" prefWidth="141.0" />
                         <TextField fx:id="rFreqText" layoutX="300.0" layoutY="154.0" onAction="#setRadioFreq" prefHeight="26.0" prefWidth="141.0" />
                         <CheckBox fx:id="radioActiveCheck" layoutX="102.0" layoutY="236.0" mnemonicParsing="false" onAction="#setRadioActive" prefHeight="36.0" prefWidth="313.0" text="Turn Radio On and Off">
                            <font>
@@ -127,6 +126,7 @@
                               <Font size="22.0" />
                            </font>
                         </Text>
+                        <Slider fx:id="rVolSlider" layoutX="298.0" layoutY="203.0" majorTickUnit="20.0" prefHeight="38.0" prefWidth="318.0" showTickLabels="true" showTickMarks="true" />
                      </children>
                   </AnchorPane>
               </content>
